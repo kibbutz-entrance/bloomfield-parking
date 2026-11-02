@@ -112,6 +112,7 @@ h2{font-size:15px;font-weight:600;margin:24px 4px 10px;color:var(--mute)}
 .win{max-width:100%}
 .row .cal[aria-disabled="true"]{opacity:.4;pointer-events:none}
 .rt.unknown{font-size:30px}
+.rt.planned{font-size:26px;font-weight:500;color:var(--mute)}
 .toast{position:fixed;inset-inline:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .4s var(--ease);z-index:20}
 .toast.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
@@ -132,8 +133,8 @@ const TX={
 he:{title:"חניה באזור הקיבוץ",q:"איזה יום?",today:"היום",tom:"מחר",other:"יום אחר",free:"יש חניה",nogame:"לא מופיע אירוע בבלומפילד",next:"המשחק הבא:",block:"אין חניה",pre:"כנראה",between:"בין {a} ל-{b}",spec:"משחק בשעה מיוחדת",backToday:"חזרה להיום",prev:"היום הקודם",nxt:"היום הבא",game:"אירוע ב-",upd:"עודכן",est:"שעה משוערת",add:"הוספה ליומן",added:"נוסף ליומן",upc:"האירועים הקרובים",all:"הוספת האירועים עם שעה ליומן",noP:"אין חניה",none:"אין כרגע אירועים ברשימה",lang:"EN",loc:"he-IL",calT:"אין חניה בקיבוץ",vs:" – ",back:"חזרה",ics:"הקובץ ירד – פתחו אותו כדי להוסיף ליומן",opened:"נפתח ביומן"},
 en:{title:"Parking near the kibbutz",q:"Which day?",today:"Today",tom:"Tomorrow",other:"Other day",free:"parking available",nogame:"No published event at Bloomfield",next:"Next game:",block:"no parking",pre:"Probably",between:"between {a} and {b}",spec:"unusual game time",backToday:"Back to today",prev:"Previous day",nxt:"Next day",game:"Event at ",upd:"Updated",est:"est. time",add:"Add to calendar",added:"Added",upc:"Upcoming events",all:"Add scheduled events to calendar",noP:"No parking",none:"No events currently listed",lang:"עב",loc:"en-GB",calT:"No parking at the kibbutz",vs:" vs ",back:"Back",ics:"File downloaded – open it to add to your calendar",opened:"Opened in calendar"}};
 const EXTRA={
-he:{loading:"בודק מידע",unknown:"אין מידע מספיק",tentative:"ייתכן עומס",unavailable:"לא הצלחתי לקבל מידע עדכני",stale:"המידע חלקי או לא עדכני",horizon:"התאריך רחוק מדי לקביעה שאין אירוע",conflict:"יש אי־התאמה בין המקורות — כדאי לבדוק",timeTbd:"השעה או המועד עדיין לא סופיים",checking:"בודק את לוחות האירועים",sources:"מקורות ועדכניות",estimate:"הערכת חניה לפי אירועים שפורסמו; לא מדידה של חניות פנויות.",windowEstimate:"חלון עומס משוער",nextDay:"למחרת",sourceOk:"נבדק",sourceError:"לא זמין כרגע",never:"טרם התקבל מידע",noTimed:"אין כרגע אירועים עם שעה סופית",limited:"לא כל המקורות זמינים"},
-en:{loading:"Checking schedules",unknown:"Not enough information",tentative:"Possible congestion",unavailable:"Could not obtain current information",stale:"Information is partial or out of date",horizon:"Too far ahead to rule out an event",conflict:"Sources disagree — please check",timeTbd:"Time or date is not final yet",checking:"Checking published event schedules",sources:"Sources and freshness",estimate:"Parking estimate based on published events; no measurement of available spaces.",windowEstimate:"Estimated congestion window",nextDay:"next day",sourceOk:"Checked",sourceError:"Currently unavailable",never:"No successful check yet",noTimed:"No events with a confirmed time yet",limited:"Some sources are unavailable"}};
+he:{planned:"יש משחק מתוכנן",plannedEvent:"יש אירוע מתוכנן",loading:"בודק מידע",unknown:"אין מידע מספיק",tentative:"ייתכן עומס",unavailable:"לא הצלחתי לקבל מידע עדכני",stale:"המידע חלקי או לא עדכני",horizon:"התאריך רחוק מדי לקביעה שאין אירוע",conflict:"יש אי־התאמה בין המקורות — כדאי לבדוק",timeTbd:"השעה או המועד עדיין לא סופיים",checking:"בודק את לוחות האירועים",sources:"מקורות ועדכניות",estimate:"הערכת חניה לפי אירועים שפורסמו; לא מדידה של חניות פנויות.",windowEstimate:"חלון עומס משוער",nextDay:"למחרת",sourceOk:"נבדק",sourceError:"לא זמין כרגע",never:"טרם התקבל מידע",noTimed:"אין כרגע אירועים עם שעה סופית",limited:"לא כל המקורות זמינים"},
+en:{planned:"Match scheduled",plannedEvent:"Event scheduled",loading:"Checking schedules",unknown:"Not enough information",tentative:"Possible congestion",unavailable:"Could not obtain current information",stale:"Information is partial or out of date",horizon:"Too far ahead to rule out an event",conflict:"Sources disagree — please check",timeTbd:"Time or date is not final yet",checking:"Checking published event schedules",sources:"Sources and freshness",estimate:"Parking estimate based on published events; no measurement of available spaces.",windowEstimate:"Estimated congestion window",nextDay:"next day",sourceOk:"Checked",sourceError:"Currently unavailable",never:"No successful check yet",noTimed:"No events with a confirmed time yet",limited:"Some sources are unavailable"}};
 let DATA=null,G=[],loading=true,LAST_STATE="";
 const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const safeUrl=value=>{try{const u=new URL(value);return u.protocol==="https:"?u.href:"#"}catch(e){return "#"}};
@@ -196,12 +197,12 @@ function render(){
   let sig="--grn",ink="--grn-ink",icon=I.tick,title=T("free"),win="",tiny="",prefix=T("pre");
   if(loading&&!DATA){sig="--amb";ink="--amb-ink";icon=I.clock;title=T("loading");win="";tiny=T("checking");prefix=""}
   else if(assessment.state==="unknown"){
-    sig="--amb";ink="--amb-ink";icon=I.clock;title=T("unknown");tiny=T(assessment.reason);prefix="";
+    sig="--mute";ink="--mute";icon=I.clock;title=T("unknown");tiny=T(assessment.reason);prefix="";
   }else if(g){
     const tentative=assessment.state==="tentative";
-    title=T(tentative?"tentative":"block");prefix=tentative?"":T("pre");
+    title=T(tentative?(selected.every(e=>e.kind==="culture")?"plannedEvent":"planned"):"block");prefix=tentative?"":T("pre");
     const evening=assessment.windows.length&&+assessment.windows[0][0].slice(0,2)>=16;
-    sig=tentative||!evening?"--amb":"--red";ink=tentative||!evening?"--amb-ink":"--red-ink";icon=tentative||!evening?I.clock:I.x;
+    sig=tentative?"--mute":"--red";ink=tentative?"--mute":"--red-ink";icon=tentative?I.clock:I.x;
     win=assessment.windows.length?assessment.windows.map(([a,b])=>T("between").replace("{a}",`<bdi>${a}</bdi>`).replace("{b}",`<bdi>${b}</bdi>`)).join(" · "):T("timeTbd");
     tiny=selected.map(e=>`${e.k?T("game")+e.k+" · ":""}${name(e)}`).join(" + ");
     tiny+=`<br>${T("windowEstimate")}${assessment.reason?" · "+T(assessment.reason==="tentative"?"timeTbd":assessment.reason):""}`;
@@ -218,7 +219,7 @@ function render(){
         <button class="hb" type="button" data-nav="-1" aria-label="${T("prev")}"${sel<=TODAY?" hidden":""}>${I.prev}</button>
         <div class="when"><label class="datepill${hint?" hint":""}">${I.cal}<span>${rel}${dt(sel).toLocaleDateString(T("loc"),{weekday:"short",day:"numeric",month:"short"})}</span>${I.down}<input type="date" id="date" min="${TODAY}" max="${MAX}" value="${sel}" aria-label="${T("other")}"></label>${back}</div>
         <button class="hb" type="button" data-nav="1" aria-label="${T("nxt")}"${sel>=MAX?" hidden":""}>${I.nxt}</button></div>
-      <div class="badge">${icon}</div><div class="rt${assessment.state==="unknown"?" unknown":""}" role="status">${prefix?`<span class="th">${prefix}</span>`:""}<span>${title}</span></div><div class="win">${win}</div><div class="sm">${tiny}</div>
+      <div class="badge">${icon}</div><div class="rt${assessment.state==="unknown"?" unknown":assessment.state==="tentative"?" planned":""}" role="status">${prefix?`<span class="th">${prefix}</span>`:""}<span>${title}</span></div><div class="win">${win}</div><div class="sm">${tiny}</div>
       ${selected.length===1&&validCalendar(g)?`<button class="addc" id="addc" type="button">${I.plus}<span>${T("add")}</span></button>`:""}
     </div>
     <button class="more" id="more" type="button">${T("upc")}${I.down}</button></div>${listHTML()}`;
