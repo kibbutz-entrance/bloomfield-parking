@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "updated": "2026-11-02T21:38:59+00:00",
-  "last_attempt": "2026-11-02T21:38:59+00:00",
+  "updated": "2026-11-02T21:49:21+00:00",
+  "last_attempt": "2026-11-02T21:49:21+00:00",
   "timezone": "Asia/Jerusalem",
   "fresh_hours": 2,
   "coverage": {
@@ -16,8 +16,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-02T21:38:59+00:00",
-      "last_success": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
+      "last_success": "2026-11-02T21:49:21+00:00",
       "events_count": 38
     },
     {
@@ -26,8 +26,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-02T21:38:59+00:00",
-      "last_success": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
+      "last_success": "2026-11-02T21:49:21+00:00",
       "events_count": 6
     },
     {
@@ -36,7 +36,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=1061",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "events_count": 8
@@ -47,7 +47,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=2176",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "events_count": 8
@@ -58,8 +58,8 @@
       "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-02T21:38:59+00:00",
-      "last_success": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
+      "last_success": "2026-11-02T21:49:21+00:00",
       "events_count": 11
     },
     {
@@ -68,8 +68,8 @@
       "url": "https://sportlv.co.il/wp-json/tribe/events/v1/events",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-02T21:38:59+00:00",
-      "last_success": "2026-11-02T21:38:59+00:00",
+      "checked_at": "2026-11-02T21:49:21+00:00",
+      "last_success": "2026-11-02T21:49:21+00:00",
       "events_count": 2
     }
   ],
