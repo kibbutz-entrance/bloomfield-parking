@@ -29,6 +29,19 @@ class SourceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             u.parse_ics('<html>403 Access denied</html>')
 
+    def test_city_api_uses_utc_and_actual_venue(self):
+        event = dict(id=1, title='הפועל תל־אביב – מכבי חיפה', utc_start_date='2026-11-02 18:30:00',
+                     venue=dict(venue='אצטדיון בלומפילד'), url='https://sportlv.co.il/event/1', all_day=False)
+        result = u.parse_city(json.dumps(dict(events=[event], total=1)))
+        self.assertEqual(result[0]['k'], '20:30')
+        self.assertEqual(result[0]['d'], '2026-11-02')
+
+    def test_city_api_does_not_silently_truncate_pagination(self):
+        source = next(s for s in u.SOURCES if s['id'] == 'city')
+        with patch.object(u, 'fetch', return_value=json.dumps(dict(events=[], total=3))):
+            with self.assertRaises(ValueError):
+                u.fetch_city(source, NOW)
+
     def test_ifa_placeholder_is_not_midnight_kickoff(self):
         cols = ['06/11/2026', 'מכבי ת"א - מכבי פ"ת', 'בלומפילד', '00:00', '']
         html = '<a class="table_row">' + ''.join('<div class="table_col">'+c+'</div>' for c in cols)+'</a>'

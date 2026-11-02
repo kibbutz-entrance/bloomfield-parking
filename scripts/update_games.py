@@ -20,9 +20,10 @@ MTA_URL = 'https://www.maccabi-tlv.co.il/' + urllib.parse.quote('משחקים-ו
 SOURCES = [
     dict(id='stadium_sports', label='היכלי הספורט · ספורט', url='https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download', parser='ics', required=True),
     dict(id='stadium_culture', label='היכלי הספורט · תרבות', url='https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download', parser='ics', required=True),
-    dict(id='ifa_maccabi', label='ההתאחדות · מכבי ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=1061', parser='ifa', required=True),
-    dict(id='ifa_hapoel', label='ההתאחדות · הפועל ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=2176', parser='ifa', required=True),
-    dict(id='maccabi', label='מכבי ת״א · האתר הרשמי', url=MTA_URL, parser='mta', required=False),
+    dict(id='ifa_maccabi', label='ההתאחדות · מכבי ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=1061', parser='ifa', required=False),
+    dict(id='ifa_hapoel', label='ההתאחדות · הפועל ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=2176', parser='ifa', required=False),
+    dict(id='maccabi', label='מכבי ת״א · האתר הרשמי', url=MTA_URL, parser='mta', required=True),
+    dict(id='city', label='רשות הספורט · תל אביב־יפו', url='https://sportlv.co.il/wp-json/tribe/events/v1/events', parser='city', required=True),
 ]
 
 
@@ -146,6 +147,43 @@ def parse_ifa(text):
 MONTHS = dict(zip('ינו פבר מרץ אפר מאי יונ יול אוג ספט אוק נוב דצמ'.split(), range(1, 13)))
 
 
+def parse_city(text):
+    data = json.loads(text)
+    if not isinstance(data.get('events'), list) or not isinstance(data.get('total'), int):
+        raise ValueError('City events API returned an invalid response')
+    records = []
+    for event in data['events']:
+        venue = (event.get('venue') or {}).get('venue', '')
+        if not is_bloomfield(venue):
+            continue
+        # Use the published UTC value, rather than a fixed UTC+2 label across DST.
+        start = datetime.fromisoformat(event['utc_start_date']).replace(tzinfo=timezone.utc).astimezone(TZ)
+        cancelled = any(word in str(event.get('event_status', '')).lower() for word in ('cancelled', 'canceled', 'postponed'))
+        records.append(dict(native_id=str(event['id']), d=start.date().isoformat(),
+                            k='' if event.get('all_day') else start.strftime('%H:%M'),
+                            title=Tree(event['title']).root.text(), venue=venue, url=event['url'],
+                            cancelled=cancelled, tentative=bool(event.get('all_day'))))
+    return records
+
+
+def fetch_city(source, now):
+    today = now.astimezone(TZ).date()
+    params = dict(start_date=str(today - timedelta(days=1)) + ' 00:00:00',
+                  end_date=str(today + timedelta(days=COVERAGE_DAYS)) + ' 23:59:59', per_page=50)
+    records, received, expected = [], 0, None
+    for page in range(1, 11):
+        text = fetch(source['url'] + '?' + urllib.parse.urlencode({**params, 'page': page}))
+        data = json.loads(text)
+        records.extend(parse_city(text))
+        received += len(data['events'])
+        expected = data['total'] if expected is None else expected
+        if received >= expected:
+            return records
+        if not data['events']:
+            break
+    raise ValueError('City API pagination is incomplete')
+
+
 def parse_mta(text):
     records = []
     for f in Tree(text).root.find('fixture-short'):
@@ -262,8 +300,11 @@ def collect_source(source, previous, now, fixture_dir=None):
     checked = stamp(now)
     try:
         suffix = '.ics' if source['parser'] == 'ics' else '.html'
-        text = (fixture_dir / (source['id'] + suffix)).read_text() if fixture_dir else fetch(source['url'])
-        parsed = dict(ics=parse_ics, ifa=parse_ifa, mta=parse_mta)[source['parser']](text)
+        if source['parser'] == 'city' and not fixture_dir:
+            parsed = fetch_city(source, now)
+        else:
+            text = (fixture_dir / (source['id'] + suffix)).read_text() if fixture_dir else fetch(source['url'])
+            parsed = dict(ics=parse_ics, ifa=parse_ifa, mta=parse_mta, city=parse_city)[source['parser']](text)
         return dict(status='ok', checked_at=checked, last_success=checked, records=[{**r, 'source': source['id']} for r in parsed])
     except Exception as error:
         return dict(status='error', checked_at=checked, last_success=previous.get('last_success'),

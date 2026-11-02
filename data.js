@@ -22,7 +22,7 @@
   }
   function sourceFresh(data,id,now){const s=data.sources.find(s=>s.id===id);return !!s&&s.status==='ok'&&fresh(s.last_success,now,2)}
   function coverageFresh(data,day,now=Date.now()){
-    const required=['stadium_sports','stadium_culture','ifa_maccabi','ifa_hapoel'];
+    const required=['stadium_sports','stadium_culture','maccabi','city'];
     return !!data&&data.coverage.complete&&day>=data.coverage.start&&day<=data.coverage.through&&required.every(id=>sourceFresh(data,id,now));
   }
   function eventsForDay(data,day){

@@ -1,8 +1,8 @@
 {
   "stadium_sports": {
     "status": "ok",
-    "checked_at": "2026-11-02T21:22:32+00:00",
-    "last_success": "2026-11-02T21:22:32+00:00",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
     "records": [
       {
         "native_id": "EF9FCB7C-DA64-4FCC-ABBB-D56CA0FF300B",
@@ -426,8 +426,8 @@
   },
   "stadium_culture": {
     "status": "ok",
-    "checked_at": "2026-11-02T21:22:32+00:00",
-    "last_success": "2026-11-02T21:22:32+00:00",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
     "records": [
       {
         "native_id": "70EA658E-FD3C-4405-B2D7-AA5F12E8E321",
@@ -498,10 +498,9 @@
     ]
   },
   "ifa_maccabi": {
-    "status": "error",
-    "checked_at": "2026-11-02T21:22:32+00:00",
-    "last_success": "2026-11-02T21:20:33+00:00",
-    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "status": "ok",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
     "records": [
       {
         "native_id": "",
@@ -594,10 +593,10 @@
       {
         "native_id": "",
         "d": "2026-11-02",
-        "k": "20:00",
+        "k": "20:01",
         "title": "הפועל ר\"ג - מכבי ת\"א",
         "venue": "רחובות אצטדיון עירוני",
-        "url": "https://www.football.org.il/leagues/games/game/?game_id=1120623",
+        "url": "https://www.football.org.il/leagues/games/game/?game_id=-1",
         "cancelled": false,
         "tentative": false,
         "source": "ifa_maccabi"
@@ -792,10 +791,9 @@
     ]
   },
   "ifa_hapoel": {
-    "status": "error",
-    "checked_at": "2026-11-02T21:22:32+00:00",
-    "last_success": "2026-11-02T21:20:33+00:00",
-    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "status": "ok",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
     "records": [
       {
         "native_id": "",
@@ -1087,8 +1085,8 @@
   },
   "maccabi": {
     "status": "ok",
-    "checked_at": "2026-11-02T21:22:32+00:00",
-    "last_success": "2026-11-02T21:22:32+00:00",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
     "records": [
       {
         "native_id": "",
@@ -1287,6 +1285,35 @@
         "tentative": true,
         "cancelled": false,
         "source": "maccabi"
+      }
+    ]
+  },
+  "city": {
+    "status": "ok",
+    "checked_at": "2026-11-02T21:25:01+00:00",
+    "last_success": "2026-11-02T21:25:01+00:00",
+    "records": [
+      {
+        "native_id": "36853",
+        "d": "2026-11-02",
+        "k": "20:30",
+        "title": "הפועל תל־אביב – מכבי חיפה",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://sportlv.co.il/event/%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%9e%d7%9b%d7%91%d7%99-%d7%97%d7%99%d7%a4%d7%94/",
+        "cancelled": false,
+        "tentative": false,
+        "source": "city"
+      },
+      {
+        "native_id": "36856",
+        "d": "2026-11-06",
+        "k": "14:00",
+        "title": "מכבי תל־אביב – מכבי פתח תקווה",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://sportlv.co.il/event/%d7%9e%d7%9b%d7%91%d7%99-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%9e%d7%9b%d7%91%d7%99-%d7%a4%d7%aa%d7%97-%d7%aa%d7%a7%d7%95%d7%95%d7%94/",
+        "cancelled": false,
+        "tentative": false,
+        "source": "city"
       }
     ]
   }
