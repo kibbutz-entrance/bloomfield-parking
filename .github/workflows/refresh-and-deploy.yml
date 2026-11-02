@@ -47,13 +47,10 @@ jobs:
           mkdir -p dist
           cp index.html data.js games.json .nojekyll dist/
       - uses: actions/configure-pages@v5
-        if: vars.PAGES_ENABLED == 'true'
       - uses: actions/upload-pages-artifact@v4
-        if: vars.PAGES_ENABLED == 'true'
         with:
           path: dist
   deploy:
-    if: vars.PAGES_ENABLED == 'true'
     needs: build
     runs-on: ubuntu-latest
     environment:
