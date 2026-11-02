@@ -1,11 +1,11 @@
-# Parking project — continuation state
+# Parking project — current state
 
-- Canonical repository: kibbutz-entrance/bloomfield-parking, branch main; created private on 2026-11-02.
-- Goal: preserve Claude's existing design, put כנראה beside status, remove the thin באזור label, host on GitHub with reliable automatic official data collection.
-- Source: uploaded bloomfield-parking-repo.zip. Existing UI reused, not rebuilt.
-- Data: six official feeds across sportpalace.co.il, football.org.il, maccabi-tlv.co.il and sportlv.co.il; no API key. IFA works from the local environment but returned 403 from GitHub runners. It is supplementary, with errors and original cache age exposed. Required core feeds are stadium sports, stadium culture, Maccabi, and City Sports API. City API is paginated and uses UTC event timestamps. Backend refresh is scheduled every 30 minutes. Frontend rejects stale all-clear states.
-- Validation: 17 Python parser/failure tests, 17 Node reliability/timezone tests, and browser checks of Hebrew UI and source status. See tests/.
-- Publication blocker: automated approval review rejected creating a PUBLIC repository because the original hosting request did not explicitly authorize public visibility. A PRIVATE repository was created as a safer alternative. Do not turn it public or publish via another route to bypass that rejection. Obtain explicit approval for public repository/code and public website.
-- GitHub Pages settings were inspected. The current account requires public visibility or a paid upgrade for this private repository. No paid upgrade is authorized or needed for the proposed public route.
-- Next after user approval: make the existing repo public; enable Pages via Actions; set repository Actions variable PAGES_ENABLED=true; run workflow; verify remote update, deploy and deployed UI. Preserve the existing repo identity and all source logic.
-- PAGES_ENABLED is deliberately unset, so deployment remains disabled while the approval is pending. No hosted website URL has been claimed.
+- Canonical repository: kibbutz-entrance/bloomfield-parking, branch main, public.
+- Public URL: https://kibbutz-entrance.github.io/bloomfield-parking/
+- User explicitly approved public website and public code on 2026-11-02. The earlier approval block was resolved; no publication approval remains pending. GitHub sudo/email authentication was completed through secure browserAuth; do not record credentials or codes.
+- Existing Claude design reused. כנראה is beside the status, and the thin באזור label is removed. Preserve this design.
+- Six official feeds across sportpalace.co.il, football.org.il, maccabi-tlv.co.il and sportlv.co.il. Required feeds: stadium_sports, stadium_culture, maccabi, city. IFA works locally but returns 403 from GitHub runners; it remains supplementary with original cache age and errors exposed. Do not treat cached IFA records as freshly checked.
+- Backend: GitHub Actions refreshes and deploys at minutes 13 and 43 of every hour, plus pushes and manual runs. Publication gate PAGES_ENABLED was removed after approval. GitHub Pages uses Actions and HTTPS.
+- Reliability: no synthetic fallback fixtures or invented kickoff times. Date/time/venue/cancellation disagreement stays uncertain; missing home venue stays uncertain. Green requires all core feeds fresh within 2 hours and a date within the 14-day coverage window. Parking is an estimate based on published events, not space occupancy or an official traffic closure.
+- Validation: 17 Python tests and 17 Node tests passed locally and on GitHub. Production run 41530238351 completed build and deploy successfully. Fresh core data was pulled at 2026-11-02T21:38:59+00:00. Public HTML and games.json were checked. Nov 6 14:00 agrees among stadium, city and Maccabi.
+- No paid subscriptions, API keys or account upgrades were introduced. No outstanding blockers. Future work should inspect the current source and current Actions run rather than reconstruct from old snapshots.
