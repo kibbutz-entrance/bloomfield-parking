@@ -1,0 +1,65 @@
+name: Refresh official schedules and deploy
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '13,43 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: parking-production
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify parser and reliability rules
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py'
+          node --test tests/data.test.cjs
+      - name: Pull official public sources
+        run: python scripts/update_games.py
+      - name: Save last successful responses and current health
+        run: |
+          git config user.name 'parking-bot'
+          git config user.email 'parking-bot@users.noreply.github.com'
+          git add games.json data/source-cache.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh official event schedules [skip ci]'
+            git push
+          fi
+      - name: Prepare public website
+        run: |
+          mkdir -p dist
+          cp index.html data.js games.json .nojekyll dist/
+      - uses: actions/configure-pages@v5
+        if: vars.PAGES_ENABLED == 'true'
+      - uses: actions/upload-pages-artifact@v4
+        if: vars.PAGES_ENABLED == 'true'
+        with:
+          path: dist
+  deploy:
+    if: vars.PAGES_ENABLED == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

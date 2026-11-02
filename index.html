@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>חניה באזור הקיבוץ · Kibbutz parking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6f8;--card:#fff;--ink:#14171c;--mute:#6b7280;--line:#e6e8ec;
+  --red:#e5484d;--red-ink:#a32126;--grn:#2fa36b;--grn-ink:#17613f;--amb:#d98b00;--amb-ink:#7a4f00;
+  --red-bg:#fdecec;--amb-bg:#fff2d6;
+  --ease:cubic-bezier(.22,1,.36,1);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1114;--card:#181b20;--ink:#f1f3f5;--mute:#98a1ad;--line:#262a31;
+  --red-ink:#ffb3b6;--grn-ink:#9be3bc;--amb-ink:#f5d778;--red-bg:#3a1a1c;--amb-bg:#372b08;}}
+:root[data-theme="dark"]{
+  --bg:#0f1114;--card:#181b20;--ink:#f1f3f5;--mute:#98a1ad;--line:#262a31;
+  --red-ink:#ffb3b6;--grn-ink:#9be3bc;--amb-ink:#f5d778;--red-bg:#3a1a1c;--amb-bg:#372b08;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Rubik',system-ui,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);height:56px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;max-width:520px;margin:0 auto;padding:0 8px}
+header .t{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:500;color:var(--mute)}
+header .t svg{width:18px;height:18px}
+.hb{width:40px;height:40px;border:0;background:none;border-radius:50%;display:grid;place-items:center;color:var(--mute);font-size:13px;font-weight:600;transition:transform .15s var(--ease),background .2s}
+.hb:active{transform:scale(.9);background:var(--line)}
+.hb svg{width:22px;height:22px}
+.hb input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+label.hb{position:relative;cursor:pointer}
+.nav{display:flex;align-items:center;gap:4px;width:100%;margin-bottom:22px}
+.nav .hb{width:40px;height:40px}
+.nav .hb[hidden]{visibility:hidden;display:grid}
+.nav .when{flex:1;min-height:74px;margin:0;text-align:center;font-size:18px;font-weight:500;color:var(--ink)}
+.nav .when button{display:block;margin:2px auto 0;border:0;background:none;padding:0;font-size:13px;color:var(--mute);text-decoration:underline;text-underline-offset:3px}
+html[dir=rtl] .nav .hb svg{transform:scaleX(-1)}
+.datepill{position:relative;display:inline-flex;align-items:center;gap:8px;height:50px;padding-inline:6px 14px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--acc) 40%,var(--line));background:var(--card);font-size:15px;font-weight:500;white-space:nowrap;cursor:pointer;transition:transform .15s var(--ease),border-color .2s}
+.datepill:active{transform:scale(.96);border-color:var(--acc)}
+.datepill svg{width:16px;height:16px;color:var(--acc);flex:none}
+.datepill>svg:first-child{width:34px;height:34px;padding:7px;border-radius:50%;background:var(--acc);color:#fff}
+.datepill.hint>svg:first-child{animation:ring 2s cubic-bezier(.22,1,.36,1) .9s 3}
+:root{--acc:#5b7cfa}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--acc:#8aa4ff}}
+:root[data-theme="dark"]{--acc:#8aa4ff}
+@keyframes ring{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 45%,transparent);transform:scale(1)}45%{transform:scale(1.08)}100%{box-shadow:0 0 0 18px color-mix(in srgb,var(--acc) 0%,transparent);transform:scale(1)}}
+.datepill input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.link{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px}
+
+main{max-width:520px;margin:0 auto;padding:0 16px}
+.screen{min-height:calc(100svh - 56px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:20px}
+.screen.first{animation:swap .4s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pop{from{transform:scale(.6)}to{transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.q{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:12px 4px 20px}
+.pick{position:relative;flex:1;max-height:150px;margin-bottom:12px;width:100%;display:flex;align-items:center;gap:18px;padding:0 24px;border-radius:28px;border:1px solid var(--line);background:var(--card);font-size:24px;font-weight:500;text-align:start;transition:transform .15s var(--ease),border-color .2s}
+.pick:active{transform:scale(.97);border-color:var(--ink)}
+.pick svg{flex:none;width:40px;height:40px;color:var(--mute)}
+.pick input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+
+.res{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:6px;padding-top:8px}
+.when{font-size:15px;color:var(--mute);margin-bottom:18px}
+.badge{width:116px;height:116px;border-radius:50%;background:var(--sig);display:grid;place-items:center;margin:clamp(12px,5vh,48px) 0 22px;animation:pop .55s var(--ease)}
+.badge svg{width:56px;height:56px;stroke:#fff;stroke-width:3}
+.badge path,.badge circle{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .55s .1s var(--ease) forwards}
+.rt{display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap;font-size:34px;font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--ink2)}
+.th{display:inline;font-size:18px;font-weight:300;line-height:1.5;letter-spacing:0}
+.win{font-size:30px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink2)}
+.sm{font-size:13px;color:var(--mute);margin-top:14px}
+.addc{margin-top:22px;height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:8px;transition:transform .15s var(--ease),background .25s,color .25s}
+.addc:active{transform:scale(.95)}
+.addc svg{width:18px;height:18px}
+.addc.done,.cal.done{background:var(--grn);border-color:var(--grn);color:#fff}
+.more{margin:auto 0 0;border:0;background:none;color:var(--mute);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px;align-self:center}
+.more svg{width:20px;height:20px;animation:nudge 2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(4px)}}
+
+h2{font-size:15px;font-weight:600;margin:24px 4px 10px;color:var(--mute)}
+.list{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;background:none;border:0;border-bottom:1px solid var(--line);text-align:start;transition:background .2s}
+.row:last-child{border-bottom:0}
+.row:active{background:var(--bg)}
+.dt{flex:none;width:44px;text-align:center;line-height:1.1}
+.dt b{display:block;font-size:22px;font-weight:700}
+.dt span{font-size:12px;color:var(--mute)}
+.info{flex:1;min-width:0}
+.info .t{font-size:15px;font-weight:500;font-variant-numeric:tabular-nums}
+.info .w{font-size:12px;color:var(--mute)}
+.tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--amb-bg);color:var(--amb-ink);margin-inline-start:6px;white-space:nowrap}
+.cal{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;text-decoration:none;color:var(--ink);transition:transform .15s var(--ease),background .25s}
+.cal:active{transform:scale(.9)}
+.cal svg{width:18px;height:18px}
+.all{display:block;width:100%;margin:16px 0 40px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-weight:500;font-size:15px;transition:transform .15s var(--ease)}
+.all:active{transform:scale(.98)}
+.upd{margin:0 0 12px;text-align:center;font-size:12px;color:var(--mute)}
+.provenance{margin:-24px 0 32px;color:var(--mute);font-size:12px;text-align:center}
+.provenance summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.provenance ul{list-style:none;padding:0;line-height:1.9}
+.provenance a{color:inherit}
+.win{max-width:100%}
+.row .cal[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.rt.unknown{font-size:30px}
+.toast{position:fixed;inset-inline:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .4s var(--ease);z-index:20}
+.toast.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <span></span>
+  <div class="t"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M10 16V8h3a2.5 2.5 0 010 5h-3"/></svg><span id="title"></span></div>
+  <button class="hb" id="lang" type="button"></button>
+</header>
+<main id="app"></main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data.js"></script>
+<script>
+const TX={
+he:{title:"חניה באזור הקיבוץ",q:"איזה יום?",today:"היום",tom:"מחר",other:"יום אחר",free:"יש חניה",nogame:"לא מופיע אירוע בבלומפילד",next:"המשחק הבא:",block:"אין חניה",pre:"כנראה",between:"בין {a} ל-{b}",spec:"משחק בשעה מיוחדת",backToday:"חזרה להיום",prev:"היום הקודם",nxt:"היום הבא",game:"אירוע ב-",upd:"עודכן",est:"שעה משוערת",add:"הוספה ליומן",added:"נוסף ליומן",upc:"האירועים הקרובים",all:"הוספת האירועים עם שעה ליומן",noP:"אין חניה",none:"אין כרגע אירועים ברשימה",lang:"EN",loc:"he-IL",calT:"אין חניה בקיבוץ",vs:" – ",back:"חזרה",ics:"הקובץ ירד – פתחו אותו כדי להוסיף ליומן",opened:"נפתח ביומן"},
+en:{title:"Parking near the kibbutz",q:"Which day?",today:"Today",tom:"Tomorrow",other:"Other day",free:"parking available",nogame:"No published event at Bloomfield",next:"Next game:",block:"no parking",pre:"Probably",between:"between {a} and {b}",spec:"unusual game time",backToday:"Back to today",prev:"Previous day",nxt:"Next day",game:"Event at ",upd:"Updated",est:"est. time",add:"Add to calendar",added:"Added",upc:"Upcoming events",all:"Add scheduled events to calendar",noP:"No parking",none:"No events currently listed",lang:"עב",loc:"en-GB",calT:"No parking at the kibbutz",vs:" vs ",back:"Back",ics:"File downloaded – open it to add to your calendar",opened:"Opened in calendar"}};
+const EXTRA={
+he:{loading:"בודק מידע",unknown:"אין מידע מספיק",tentative:"ייתכן עומס",unavailable:"לא הצלחתי לקבל מידע עדכני",stale:"המידע חלקי או לא עדכני",horizon:"התאריך רחוק מדי לקביעה שאין אירוע",conflict:"יש אי־התאמה בין המקורות — כדאי לבדוק",timeTbd:"השעה או המועד עדיין לא סופיים",checking:"בודק את לוחות האירועים",sources:"מקורות ועדכניות",estimate:"הערכת חניה לפי אירועים שפורסמו; לא מדידה של חניות פנויות.",windowEstimate:"חלון עומס משוער",nextDay:"למחרת",sourceOk:"נבדק",sourceError:"לא זמין כרגע",never:"טרם התקבל מידע",noTimed:"אין כרגע אירועים עם שעה סופית",limited:"לא כל המקורות זמינים"},
+en:{loading:"Checking schedules",unknown:"Not enough information",tentative:"Possible congestion",unavailable:"Could not obtain current information",stale:"Information is partial or out of date",horizon:"Too far ahead to rule out an event",conflict:"Sources disagree — please check",timeTbd:"Time or date is not final yet",checking:"Checking published event schedules",sources:"Sources and freshness",estimate:"Parking estimate based on published events; no measurement of available spaces.",windowEstimate:"Estimated congestion window",nextDay:"next day",sourceOk:"Checked",sourceError:"Currently unavailable",never:"No successful check yet",noTimed:"No events with a confirmed time yet",limited:"Some sources are unavailable"}};
+let DATA=null,G=[],loading=true,LAST_STATE="";
+const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl=value=>{try{const u=new URL(value);return u.protocol==="https:"?u.href:"#"}catch(e){return "#"}};
+const $=id=>document.getElementById(id);
+const dt=iso=>new Date(iso+"T12:00:00");
+const addDay=(iso,n)=>{const x=dt(iso);x.setDate(x.getDate()+n);return x.toLocaleDateString("sv-SE")};
+let TODAY=ParkingData.dateAt(Date.now()),TOMORROW=addDay(TODAY,1);
+let upcoming=G.filter(g=>g.d>=TODAY);
+let lang="he";
+try{lang=localStorage.getItem("lang")||((navigator.language||"he").startsWith("he")?"he":"en")}catch(e){lang=(navigator.language||"he").startsWith("he")?"he":"en"}
+if(!["he","en"].includes(lang))lang="he";
+let MAX=addDay(TODAY,365),sel=TODAY,hinted=false,UPDATED="";
+const T=k=>TX[lang][k]??EXTRA[lang][k];
+const longDate=iso=>dt(iso).toLocaleDateString(T("loc"),{weekday:"long",day:"numeric",month:"long"});
+const nameIn=(g,l)=>g.t?.[l]||g.t?.he||"";
+const name=g=>esc(nameIn(g,lang));
+const validCalendar=g=>!!g?.start&&!!g.end&&g.c&&!g.conflict&&g.sources.some(id=>{const source=DATA?.sources.find(s=>s.id===id);return source?.status==="ok"&&ParkingData.fresh(source.last_success,Date.now(),2)});
+const calendarDetails=g=>`${T("windowEstimate")}: ${g.s}–${g.e}. ${T("estimate")}\n${(g.references||[]).join("\n")}`;
+const eventWindow=g=>g.start&&g.end?`<bdi>${g.s}–${g.e}</bdi>${ParkingData.dateAt(g.start)!==ParkingData.dateAt(g.end)?` (${T("nextDay")})`:""}`:T("timeTbd");
+const I={
+ sun:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>',
+ rise:'<svg viewBox="0 0 24 24"><path d="M3 19h18M7 19a5 5 0 0110 0M12 6v3M5 9.5l1.6 1.6M19 9.5l-1.6 1.6"/></svg>',
+ cal:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',
+ plus:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M12 13v4M10 15h4"/></svg>',
+ tick:'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+ x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+ clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>',
+ down:'<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'};
+
+function gcal(g){
+  const f=iso=>iso.replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");
+  return "https://calendar.google.com/calendar/render?"+new URLSearchParams({action:"TEMPLATE",text:`${T("calT")} – ${nameIn(g,lang)}`,dates:`${f(new Date(g.start).toISOString())}/${f(new Date(g.end).toISOString())}`,details:calendarDetails(g),ctz:"Asia/Jerusalem"});
+}
+function provenance(){
+  const sources=DATA?.sources||[];
+  const checked=sources.filter(s=>s.status==="ok"&&ParkingData.fresh(s.last_success,Date.now(),2)).length;
+  const updated=UPDATED?new Date(UPDATED).toLocaleString(T("loc"),{timeZone:"Asia/Jerusalem",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):T("never");
+  return `<details class="provenance"><summary>${T("sources")}</summary><p class="upd">${T("upd")} ${esc(updated)} · ${checked}/${sources.length}</p><ul>${sources.map(s=>`<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a> · ${T(s.status==="ok"&&ParkingData.fresh(s.last_success,Date.now(),2)?"sourceOk":"sourceError")}</li>`).join("")}</ul><p>${T("estimate")}</p></details>`;
+}
+function listHTML(){
+  const rows=upcoming.map(g=>{
+    const x=dt(g.d),tag=g.c||(!g.start&&!g.conflict)?"":`<span class="tag">${T(g.conflict?"conflict":"timeTbd")}</span>`;
+    return `<div class="row" role="button" tabindex="0" data-d="${g.d}" aria-label="${esc(longDate(g.d))}">
+      <div class="dt"><b>${x.getDate()}</b><span>${x.toLocaleDateString(T("loc"),{month:"short"})}</span></div>
+      <div class="info"><div class="t">${x.toLocaleDateString(T("loc"),{weekday:"long"})} · ${eventWindow(g)}${tag}</div><div class="w">${name(g)}</div></div>
+      ${validCalendar(g)?`<a class="cal" href="${esc(gcal(g))}" target="_blank" rel="noopener noreferrer" aria-label="${T("add")}">${I.cal}</a>`:""}
+    </div>`}).join("");
+  const timed=upcoming.some(validCalendar);
+  return `<h2 id="upc">${T("upc")}</h2><div class="list">${rows||`<div class="row" style="color:var(--mute)">${T(loading?"checking":"none")}</div>`}</div><button class="all" id="ics" type="button" ${timed?"":"disabled"}>${T("all")}</button>${provenance()}`;
+}
+
+I.prev='<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>';I.nxt='<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
+function render(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==="he"?"rtl":"ltr";
+  $("title").textContent=T("title");$("lang").textContent=T("lang");
+  
+  const assessment=ParkingData.assess(DATA,sel);
+  LAST_STATE=assessment.state+"|"+assessment.reason;
+  const selected=assessment.events,g=selected[0];
+  let sig="--grn",ink="--grn-ink",icon=I.tick,title=T("free"),win="",tiny="",prefix=T("pre");
+  if(loading&&!DATA){sig="--amb";ink="--amb-ink";icon=I.clock;title=T("loading");win="";tiny=T("checking");prefix=""}
+  else if(assessment.state==="unknown"){
+    sig="--amb";ink="--amb-ink";icon=I.clock;title=T("unknown");tiny=T(assessment.reason);prefix="";
+  }else if(g){
+    const tentative=assessment.state==="tentative";
+    title=T(tentative?"tentative":"block");prefix=tentative?"":T("pre");
+    const evening=assessment.windows.length&&+assessment.windows[0][0].slice(0,2)>=16;
+    sig=tentative||!evening?"--amb":"--red";ink=tentative||!evening?"--amb-ink":"--red-ink";icon=tentative||!evening?I.clock:I.x;
+    win=assessment.windows.length?assessment.windows.map(([a,b])=>T("between").replace("{a}",`<bdi>${a}</bdi>`).replace("{b}",`<bdi>${b}</bdi>`)).join(" · "):T("timeTbd");
+    tiny=selected.map(e=>`${e.k?T("game")+e.k+" · ":""}${name(e)}`).join(" + ");
+    tiny+=`<br>${T("windowEstimate")}${assessment.reason?" · "+T(assessment.reason==="tentative"?"timeTbd":assessment.reason):""}`;
+  }else{
+    win=T("nogame");
+    const nx=upcoming.find(x=>x.d>sel);
+    if(nx)tiny=`${T("next")} <button class="link sm" style="margin:0" data-d="${nx.d}" type="button">${longDate(nx.d)}</button>`;
+  }
+  const hint=!hinted;hinted=true;
+  const rel=sel===TODAY?T("today")+" · ":sel===TOMORROW?T("tom")+" · ":"";
+  const back=sel===TODAY?"":`<button type="button" data-d="${TODAY}">${T("backToday")}</button>`;
+  $("app").innerHTML=`<div class="screen${hint?" first":""}" style="--sig:var(${sig});--ink2:var(${ink})">
+    <div class="res"><div class="nav">
+        <button class="hb" type="button" data-nav="-1" aria-label="${T("prev")}"${sel<=TODAY?" hidden":""}>${I.prev}</button>
+        <div class="when"><label class="datepill${hint?" hint":""}">${I.cal}<span>${rel}${dt(sel).toLocaleDateString(T("loc"),{weekday:"short",day:"numeric",month:"short"})}</span>${I.down}<input type="date" id="date" min="${TODAY}" max="${MAX}" value="${sel}" aria-label="${T("other")}"></label>${back}</div>
+        <button class="hb" type="button" data-nav="1" aria-label="${T("nxt")}"${sel>=MAX?" hidden":""}>${I.nxt}</button></div>
+      <div class="badge">${icon}</div><div class="rt${assessment.state==="unknown"?" unknown":""}" role="status">${prefix?`<span class="th">${prefix}</span>`:""}<span>${title}</span></div><div class="win">${win}</div><div class="sm">${tiny}</div>
+      ${selected.length===1&&validCalendar(g)?`<button class="addc" id="addc" type="button">${I.plus}<span>${T("add")}</span></button>`:""}
+    </div>
+    <button class="more" id="more" type="button">${T("upc")}${I.down}</button></div>${listHTML()}`;
+  const a=$("addc");
+  if(a)a.onclick=()=>{window.open(gcal(g),"_blank","noopener");a.classList.add("done");a.innerHTML=I.tick+`<span>${T("added")}</span>`};
+  $("more").onclick=()=>$("upc").scrollIntoView({behavior:"smooth",block:"start"});
+  $("ics").onclick=exportIcs;
+}
+
+let tt;
+function toast(msg){const e=$("toast");e.textContent=msg;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2400)}
+
+function exportIcs(){
+  const escapeIcs=v=>String(v).replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/;/g,"\\;").replace(/,/g,"\\,");
+  const utc=v=>new Date(v).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");
+  const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Kibbutz Parking//EN","CALSCALE:GREGORIAN",`X-WR-CALNAME:${escapeIcs(T("calT"))}`];
+  upcoming.filter(validCalendar).forEach(g=>{
+    L.push("BEGIN:VEVENT",`UID:p-${g.id}@kibbutz-parking`,`DTSTAMP:${utc(Date.now())}`,
+      `DTSTART:${utc(g.start)}`,`DTEND:${utc(g.end)}`,
+      `SUMMARY:${escapeIcs(T("windowEstimate")+" – "+nameIn(g,lang))}`,`DESCRIPTION:${escapeIcs(calendarDetails(g))}`,"END:VEVENT");
+  });
+  L.push("END:VCALENDAR");
+  // RFC 5545 line folding counts UTF-8 octets, including Hebrew characters.
+  const fold=line=>{let result="",size=0;for(const ch of line){const n=new TextEncoder().encode(ch).length;if(size+n>75){result+="\r\n ";size=1}result+=ch;size+=n}return result};
+  const a=document.createElement("a"),url=URL.createObjectURL(new Blob([L.map(fold).join("\r\n")+"\r\n"],{type:"text/calendar;charset=utf-8"}));
+  a.href=url;a.download="no-parking-bloomfield.ics";document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);toast(T("ics"));
+}
+
+$("app").onclick=e=>{
+  const c=e.target.closest(".cal");
+  if(c){c.classList.add("done");c.innerHTML=I.tick;toast(T("opened"));return}
+  const p=e.target.closest("[data-d]");
+  const n=e.target.closest("[data-nav]");
+  if(n){sel=addDay(sel,+n.dataset.nav);render();return}
+  if(p){sel=p.dataset.d;render();window.scrollTo(0,0)}
+};
+$("app").addEventListener("change",e=>{if(e.target.id==="date"&&e.target.value){sel=e.target.value;render();window.scrollTo(0,0)}});
+$("lang").onclick=()=>{lang=lang==="he"?"en":"he";try{localStorage.setItem("lang",lang)}catch(e){}render()};
+
+async function load(){
+  const previous=JSON.stringify(DATA),wasLoading=loading;
+  try{
+    const r=await fetch("games.json?t="+Date.now(),{cache:"no-store",signal:AbortSignal.timeout(15000)});
+    if(!r.ok)throw Error("Schedule unavailable");
+    DATA=ParkingData.validate(await r.json());
+    UPDATED=DATA.updated||"";
+    try{localStorage.setItem("parking-data-v2",JSON.stringify(DATA))}catch(e){}
+  }catch(e){
+    if(!DATA){try{DATA=ParkingData.validate(JSON.parse(localStorage.getItem("parking-data-v2")))}catch(e){}}
+  }
+  loading=false;
+  G=DATA?.games||[];upcoming=G.filter(g=>(g.end?ParkingData.dateAt(g.end):g.d)>=TODAY);
+  if(wasLoading||previous!==JSON.stringify(DATA)||LAST_STATE!==ParkingData.assess(DATA,sel).state+"|"+ParkingData.assess(DATA,sel).reason)render();
+}
+function updateToday(){
+  const day=ParkingData.dateAt(Date.now());
+  if(day!==TODAY){const wasToday=sel===TODAY;TODAY=day;TOMORROW=addDay(day,1);MAX=addDay(day,365);if(wasToday)sel=day;upcoming=G.filter(g=>(g.end?ParkingData.dateAt(g.end):g.d)>=TODAY);render()}
+}
+$("app").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("row")){e.preventDefault();sel=e.target.dataset.d;render();window.scrollTo(0,0)}});
+setInterval(()=>{updateToday();if(!document.hidden)load()},60000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){updateToday();load()}});
+window.addEventListener("online",load);
+render();load();
+</script>
+</body>
+</html>
