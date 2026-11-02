@@ -9,3 +9,11 @@
 - Reliability: no synthetic fallback fixtures or invented kickoff times. Date/time/venue/cancellation disagreement stays uncertain; missing home venue stays uncertain. Green requires all core feeds fresh within 2 hours and a date within the 14-day coverage window. Parking is an estimate based on published events, not space occupancy or an official traffic closure.
 - Validation: 17 Python tests and 17 Node tests passed locally and on GitHub. Production run 41530238351 completed build and deploy successfully. Fresh core data was pulled at 2026-11-02T21:38:59+00:00. Public HTML and games.json were checked. Nov 6 14:00 agrees among stadium, city and Maccabi.
 - No paid subscriptions, API keys or account upgrades were introduced. No outstanding blockers. Future work should inspect the current source and current Actions run rather than reconstruct from old snapshots.
+
+## Scope confirmed and event-source research — 2026-11-02
+
+- User confirmed parking target: Kibbutz Galuyot 21, Tel Aviv. Parking pressure may extend from Bloomfield and nearby large events.
+- Default language changed to Hebrew for new visitors regardless of browser locale; an explicitly saved English preference is preserved. Commit 53f0da488d4c0d9a28f01918ebdd7b80648a586b.
+- New candidate sources researched but NOT integrated: Gagarin, Kibbutz Galuyot 13 (https://gagarin.co.il/events/; Nov 7 Anime & K-POP festival 18:00); Haoman 17, Abarbanel 88 (https://www.haoman17.com/events; Nov 6, 13, 20); Duplex, HaShah 10 (https://duplexclub.co.il/; Nov 5 at 23:00 and Nov 6 at 23:59).
+- Candidate priority is based on proximity and published event activity, not measured attendance or observed parking impact. Add per-venue congestion estimates rather than reusing football windows. Deduplicate simultaneous multi-room parties at the same venue.
+- Current automatic coverage still filters Bloomfield. Do not claim comprehensive coverage of all nearby events or that parking predictions are verified facts. Accurate claim: published events from official sources, cross-checked where multiple sources exist, with estimated parking impact and explicit freshness/uncertainty.
