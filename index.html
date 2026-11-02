@@ -142,7 +142,7 @@ const addDay=(iso,n)=>{const x=dt(iso);x.setDate(x.getDate()+n);return x.toLocal
 let TODAY=ParkingData.dateAt(Date.now()),TOMORROW=addDay(TODAY,1);
 let upcoming=G.filter(g=>g.d>=TODAY);
 let lang="he";
-try{lang=localStorage.getItem("lang")||((navigator.language||"he").startsWith("he")?"he":"en")}catch(e){lang=(navigator.language||"he").startsWith("he")?"he":"en"}
+try{lang=localStorage.getItem("lang")==="en"?"en":"he"}catch(e){lang="he"}
 if(!["he","en"].includes(lang))lang="he";
 let MAX=addDay(TODAY,365),sel=TODAY,hinted=false,UPDATED="";
 const T=k=>TX[lang][k]??EXTRA[lang][k];
