@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "updated": "2026-11-03T10:48:02+00:00",
-  "last_attempt": "2026-11-03T10:48:02+00:00",
+  "updated": "2026-11-03T18:24:46+00:00",
+  "last_attempt": "2026-11-03T18:24:46+00:00",
   "timezone": "Asia/Jerusalem",
   "fresh_hours": 2,
   "coverage": {
@@ -18,8 +18,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T10:48:02+00:00",
-      "last_success": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
+      "last_success": "2026-11-03T18:24:46+00:00",
       "unresolved_items": 0,
       "publisher": "stadium",
       "scope": "stadium",
@@ -31,8 +31,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T10:48:02+00:00",
-      "last_success": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
+      "last_success": "2026-11-03T18:24:46+00:00",
       "unresolved_items": 0,
       "publisher": "stadium",
       "scope": "stadium",
@@ -44,7 +44,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=1061",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "publisher": "ifa",
@@ -57,7 +57,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=2176",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "publisher": "ifa",
@@ -70,8 +70,8 @@
       "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T10:48:02+00:00",
-      "last_success": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
+      "last_success": "2026-11-03T18:24:46+00:00",
       "unresolved_items": 0,
       "publisher": "maccabi",
       "scope": "stadium",
@@ -83,8 +83,8 @@
       "url": "https://sportlv.co.il/wp-json/tribe/events/v1/events",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T10:48:02+00:00",
-      "last_success": "2026-11-03T10:48:02+00:00",
+      "checked_at": "2026-11-03T18:24:46+00:00",
+      "last_success": "2026-11-03T18:24:46+00:00",
       "unresolved_items": 0,
       "publisher": "city",
       "scope": "stadium",
@@ -123,7 +123,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-06",
           "time": "14:00",
@@ -135,7 +135,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-06",
           "time": "14:00",
@@ -147,7 +147,7 @@
         {
           "source": "city",
           "publisher": "city",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-06",
           "time": "14:00",
@@ -194,7 +194,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -206,7 +206,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -218,7 +218,7 @@
         {
           "source": "city",
           "publisher": "city",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -302,7 +302,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-12-05",
           "time": "15:00",
@@ -345,7 +345,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-12-12",
           "time": "19:00",
@@ -405,12 +405,12 @@
     {
       "id": "ca027a3973338d57",
       "d": "2026-12-26",
-      "k": "",
-      "s": "",
-      "e": "",
-      "start": null,
-      "end": null,
-      "c": false,
+      "k": "20:00",
+      "s": "17:00",
+      "e": "22:30",
+      "start": "2026-12-26T17:00:00+02:00",
+      "end": "2026-12-26T22:30:00+02:00",
+      "c": true,
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
@@ -429,29 +429,29 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2026-12-26",
-          "time": "",
+          "time": "20:00",
           "venue": "בלומפילד",
-          "tentative": true,
+          "tentative": false,
           "cancelled": false,
           "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
         }
       ],
       "ignored_cached_sources": [],
-      "independent_publishers": 0,
-      "verification": "planned"
+      "independent_publishers": 1,
+      "verification": "official"
     },
     {
-      "id": "e6d9f83a95578a9b",
-      "d": "2026-12-29",
-      "k": "",
-      "s": "",
-      "e": "",
-      "start": null,
-      "end": null,
-      "c": false,
+      "id": "8702b193c87bca59",
+      "d": "2026-12-30",
+      "k": "20:30",
+      "s": "17:30",
+      "e": "23:00",
+      "start": "2026-12-30T17:30:00+02:00",
+      "end": "2026-12-30T23:00:00+02:00",
+      "c": true,
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
@@ -470,31 +470,29 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
-          "date": "2026-12-29",
-          "time": "",
+          "date": "2026-12-30",
+          "time": "20:30",
           "venue": "בלומפילד",
-          "tentative": true,
+          "tentative": false,
           "cancelled": false,
           "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
         }
       ],
-      "ignored_cached_sources": [
-        "ifa_maccabi"
-      ],
-      "independent_publishers": 0,
-      "verification": "planned"
+      "ignored_cached_sources": [],
+      "independent_publishers": 1,
+      "verification": "official"
     },
     {
-      "id": "f6acfc524fa89d25",
-      "d": "2027-01-02",
-      "k": "",
-      "s": "",
-      "e": "",
-      "start": null,
-      "end": null,
-      "c": false,
+      "id": "81787f062f0f05b8",
+      "d": "2027-01-04",
+      "k": "20:30",
+      "s": "17:30",
+      "e": "23:00",
+      "start": "2027-01-04T17:30:00+02:00",
+      "end": "2027-01-04T23:00:00+02:00",
+      "c": true,
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
@@ -513,22 +511,19 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
-          "date": "2027-01-02",
-          "time": "",
+          "date": "2027-01-04",
+          "time": "20:30",
           "venue": "בלומפילד",
-          "tentative": true,
+          "tentative": false,
           "cancelled": false,
           "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
         }
       ],
-      "ignored_cached_sources": [
-        "ifa_hapoel",
-        "ifa_maccabi"
-      ],
-      "independent_publishers": 0,
-      "verification": "planned"
+      "ignored_cached_sources": [],
+      "independent_publishers": 1,
+      "verification": "official"
     },
     {
       "id": "4f731714a3b6cf27",
@@ -557,7 +552,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2027-01-09",
           "time": "",
@@ -641,7 +636,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2027-01-23",
           "time": "",
@@ -725,7 +720,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2027-02-06",
           "time": "",
@@ -850,7 +845,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-03T10:48:02+00:00",
+          "observed_at": "2026-11-03T18:24:46+00:00",
           "current": true,
           "date": "2027-02-27",
           "time": "",
