@@ -176,7 +176,8 @@ function provenance(){
 }
 function listHTML(){
   const rows=upcoming.map(g=>{
-    const x=dt(g.d),tag=g.c||(!g.start&&!g.conflict)?"":`<span class="tag">${T(g.conflict?"conflict":"timeTbd")}</span>`;
+    const stale=!g.sources.some(id=>ParkingData.sourceFresh(DATA,id,Date.now()));
+    const x=dt(g.d),tag=stale?`<span class="tag">${T("stale")}</span>`:g.c||(!g.start&&!g.conflict)?"":`<span class="tag">${T(g.conflict?"conflict":"timeTbd")}</span>`;
     return `<div class="row" role="button" tabindex="0" data-d="${g.d}" aria-label="${esc(longDate(g.d))}">
       <div class="dt"><b>${x.getDate()}</b><span>${x.toLocaleDateString(T("loc"),{month:"short"})}</span></div>
       <div class="info"><div class="t">${x.toLocaleDateString(T("loc"),{weekday:"long"})} · ${eventWindow(g)}${tag}</div><div class="w">${name(g)}</div></div>
