@@ -1,8 +1,8 @@
 {
   "stadium_sports": {
     "status": "ok",
-    "checked_at": "2026-11-03T10:11:04+00:00",
-    "last_success": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
+    "last_success": "2026-11-03T10:13:57+00:00",
     "unresolved_items": 0,
     "records": [
       {
@@ -427,8 +427,8 @@
   },
   "stadium_culture": {
     "status": "ok",
-    "checked_at": "2026-11-03T10:11:04+00:00",
-    "last_success": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
+    "last_success": "2026-11-03T10:13:57+00:00",
     "unresolved_items": 0,
     "records": [
       {
@@ -501,7 +501,7 @@
   },
   "ifa_maccabi": {
     "status": "error",
-    "checked_at": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
     "last_success": "2026-11-02T21:25:01+00:00",
     "error": "HTTPError: HTTP Error 403: Forbidden",
     "records": [
@@ -795,7 +795,7 @@
   },
   "ifa_hapoel": {
     "status": "error",
-    "checked_at": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
     "last_success": "2026-11-02T21:25:01+00:00",
     "error": "HTTPError: HTTP Error 403: Forbidden",
     "records": [
@@ -1089,8 +1089,8 @@
   },
   "maccabi": {
     "status": "ok",
-    "checked_at": "2026-11-03T10:11:04+00:00",
-    "last_success": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
+    "last_success": "2026-11-03T10:13:57+00:00",
     "unresolved_items": 0,
     "records": [
       {
@@ -1295,8 +1295,8 @@
   },
   "haoman": {
     "status": "partial",
-    "checked_at": "2026-11-03T10:11:04+00:00",
-    "last_success": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
+    "last_success": "2026-11-03T10:13:57+00:00",
     "unresolved_items": 73,
     "records": [
       {
@@ -2187,8 +2187,8 @@
   },
   "city": {
     "status": "ok",
-    "checked_at": "2026-11-03T10:11:04+00:00",
-    "last_success": "2026-11-03T10:11:04+00:00",
+    "checked_at": "2026-11-03T10:13:57+00:00",
+    "last_success": "2026-11-03T10:13:57+00:00",
     "unresolved_items": 0,
     "records": [
       {
