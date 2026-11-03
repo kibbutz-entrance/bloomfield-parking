@@ -23,73 +23,13 @@ SOURCES = [
     dict(id='ifa_maccabi', label='ההתאחדות · מכבי ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=1061', parser='ifa', required=False),
     dict(id='ifa_hapoel', label='ההתאחדות · הפועל ת״א', url='https://www.football.org.il/team-details/team-games/?team_id=2176', parser='ifa', required=False),
     dict(id='maccabi', label='מכבי ת״א · האתר הרשמי', url=MTA_URL, parser='mta', required=True),
-    dict(id='haoman', label='האומן 17 · לוח רשמי', url='https://www.haoman17.com/events?format=json', parser='haoman', required=False),
     dict(id='city', label='רשות הספורט · תל אביב־יפו', url='https://sportlv.co.il/wp-json/tribe/events/v1/events', parser='city', required=True),
 ]
 
 
 # Feeds from the same organization are never counted as independent evidence.
 PUBLISHERS = dict(stadium_sports='stadium', stadium_culture='stadium',
-                  ifa_maccabi='ifa', ifa_hapoel='ifa', maccabi='maccabi', city='city', haoman='haoman')
-
-
-def parse_haoman(text, strict=True):
-    data = json.loads(text)
-    if not isinstance(data.get('items'), list) or not isinstance(data.get('pagination'), dict):
-        raise ValueError('Haoman schedule response has changed')
-    records = []
-    months = {}
-    for i, name in enumerate('January February March April May June July August September October November December'.split(), 1):
-        months[name] = months[name[:3]] = i
-    months['Sept'] = 9
-    for item in data['items']:
-        body = re.sub(r'<(style|script)\b[^>]*>.*?</\1>', '', item.get('body', ''), flags=re.S | re.I)
-        body = Tree(body).root.text()
-        match = re.search(r'\b(' + '|'.join(months) + r')\s+(\d{1,2}),?\s+(20\d{2})\b', body, re.I)
-        if not match:
-            # Never use the blog publication timestamp as the event date.
-            if strict:
-                raise ValueError('Haoman event is missing an explicit full event date')
-            continue
-        day = date(int(match[3]), months[match[1].title()], int(match[2]))
-        clock = re.search(r'\bDoors\s+([0-2]?\d):([0-5]\d)\s*(am|pm)?\b', body, re.I)
-        kick = ''
-        if clock:
-            hour = int(clock[1])
-            if clock[3]:
-                if not 1 <= hour <= 12:
-                    raise ValueError('Invalid 12-hour event time')
-                hour = hour % 12 + (12 if clock[3].lower() == 'pm' else 0)
-            if hour > 23:
-                raise ValueError('Invalid event hour')
-            kick = f'{hour:02d}:{clock[2]}'
-        records.append(dict(native_id=item['id'], d=day.isoformat(), k=kick,
-                            title=Tree(item['title']).root.text(), venue='האומן 17', venue_id='haoman', kind='nightlife',
-                            url=urllib.parse.urljoin('https://www.haoman17.com', item['fullUrl']),
-                            tentative=not bool(clock), cancelled=bool(re.search(r'\b(cancelled|canceled|postponed)\b|בוטל|נדחה', body))))
-    return records
-
-
-def fetch_haoman(source, now):
-    records, url, seen, unresolved = [], source['url'], set(), 0
-    for _ in range(20):
-        if url in seen:
-            raise ValueError('Haoman pagination loop')
-        seen.add(url)
-        text = fetch(url)
-        data = json.loads(text)
-        page = parse_haoman(text, strict=False)
-        unresolved += len(data['items']) - len(page)
-        records.extend(page)
-        # Publication order is not event order: follow every page, even if the
-        # current page contains only past events. Never silently truncate.
-        if not data['pagination'].get('nextPage'):
-            return dict(records=records, unresolved_items=unresolved)
-        next_url = urllib.parse.urljoin(source['url'], data['pagination']['nextPageUrl'])
-        if urllib.parse.urlparse(next_url).hostname != 'www.haoman17.com':
-            raise ValueError('Unexpected Haoman pagination host')
-        url = next_url + ('&' if '?' in next_url else '?') + 'format=json'
-    raise ValueError('Haoman pagination is incomplete')
+                  ifa_maccabi='ifa', ifa_hapoel='ifa', maccabi='maccabi', city='city')
 
 
 class Node:
@@ -324,7 +264,7 @@ def build_games(records, today):
     groups = {key: items for key, items in groups.items() if items}
     games = []
     for (key, day), items in groups.items():
-        bloom = [x for x in items if is_bloomfield(x['venue']) or x.get('venue_id') == 'haoman']
+        bloom = [x for x in items if is_bloomfield(x['venue'])]
         active = [x for x in bloom if not x.get('cancelled')]
         # A home fixture with an unpublished venue could still be at Bloomfield.
         # Keep it uncertain instead of using its absence as an all-clear signal.
@@ -335,14 +275,14 @@ def build_games(records, today):
         if not active:
             continue
         times = sorted({x['k'] for x in active if x.get('k')})
-        venue_conflict = any(x['venue'] and not (is_bloomfield(x['venue']) or x.get('venue_id') == 'haoman') for x in items)
+        venue_conflict = any(x['venue'] and not (is_bloomfield(x['venue'])) for x in items)
         date_conflict = any(okey == key and oday != day and abs((date.fromisoformat(oday) - date.fromisoformat(day)).days) <= 3 for okey, oday in groups)
         conflict = len(times) > 1 or venue_conflict or date_conflict or any(x.get('cancelled') for x in bloom)
         known = [x for x in active if x.get('k') and not x.get('tentative')]
         chosen = next((x for x in active if x['source'].startswith('ifa')), active[0])
         start = end = None
         if times:
-            before, after = (60, 360) if chosen.get('kind') == 'nightlife' else (BEFORE_MIN, AFTER_MIN)
+            before, after = BEFORE_MIN, AFTER_MIN
             start = datetime.fromisoformat(day + 'T' + min(times)).replace(tzinfo=TZ) - timedelta(minutes=before)
             end = datetime.fromisoformat(day + 'T' + max(times)).replace(tzinfo=TZ) + timedelta(minutes=after)
         title = chosen['title']
@@ -386,11 +326,11 @@ def collect_source(source, previous, now, fixture_dir=None):
     checked = stamp(now)
     try:
         suffix = '.ics' if source['parser'] == 'ics' else '.html'
-        if source['parser'] in ('city', 'haoman') and not fixture_dir:
-            parsed = (fetch_city if source['parser'] == 'city' else fetch_haoman)(source, now)
+        if source['parser'] == 'city' and not fixture_dir:
+            parsed = fetch_city(source, now)
         else:
             text = (fixture_dir / (source['id'] + suffix)).read_text() if fixture_dir else fetch(source['url'])
-            parsed = dict(ics=parse_ics, ifa=parse_ifa, mta=parse_mta, city=parse_city, haoman=parse_haoman)[source['parser']](text)
+            parsed = dict(ics=parse_ics, ifa=parse_ifa, mta=parse_mta, city=parse_city)[source['parser']](text)
         unresolved = parsed.get('unresolved_items', 0) if isinstance(parsed, dict) else 0
         if isinstance(parsed, dict):
             parsed = parsed['records']
@@ -412,7 +352,7 @@ def update(output, cache_path, now, fixture_dir=None):
     today = now.astimezone(TZ).date()
     games = build_games([{**r, 'current': value['status'] in ('ok', 'partial'), 'observed_at': value.get('last_success')} for value in results for r in value['records']], today)
     sources = [{**{k: s[k] for k in ('id', 'label', 'url', 'required')}, **{k: r[k] for k in ('status', 'checked_at', 'last_success', 'error', 'unresolved_items') if k in r},
-                'publisher': PUBLISHERS[s['id']], 'scope': 'nearby' if s['id'] == 'haoman' else 'stadium',
+                'publisher': PUBLISHERS[s['id']], 'scope': 'stadium',
                 'events_count': sum(is_bloomfield(x['venue']) or bool(x.get('venue_id')) for x in r['records'])} for s, r in zip(SOURCES, results)]
     required_ok = all(not s['required'] or s['status'] == 'ok' for s in sources)
     successful = [s['last_success'] for s in sources if s.get('last_success')]

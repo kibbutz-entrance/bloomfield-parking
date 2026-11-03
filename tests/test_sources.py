@@ -135,55 +135,6 @@ class SourceTests(unittest.TestCase):
         g = u.build_games([record(current=False)], NOW.date())[0]
         self.assertFalse(g['evidence'][0]['current'])
 
-    def test_haoman_uses_explicit_event_date_not_publication_date(self):
-        page = dict(items=[dict(id='1', title='Party', body='<p>Friday, November 6, 2026 Doors 23:55</p>', fullUrl='/events/party', publishOn=1)], pagination={})
-        r = u.parse_haoman(json.dumps(page))[0]
-        self.assertEqual((r['d'], r['k']), ('2026-11-06', '23:55'))
-        r['source'] = 'haoman'
-        g = u.build_games([r], NOW.date())[0]
-        self.assertEqual(g['start'], '2026-11-06T22:55:00+02:00')
-        self.assertEqual(g['end'], '2026-11-07T05:55:00+02:00')
-        self.assertEqual(g['kind'], 'nightlife')
-
-    def test_haoman_partial_parse_retains_only_explicit_dated_events(self):
-        page = dict(items=[dict(id='1', title='Party', body='November 6, 2026 Doors 23:55', fullUrl='/events/party'),
-                           dict(id='2', title='Undated', body='Tickets soon', fullUrl='/events/undated')], pagination={})
-        self.assertEqual(len(u.parse_haoman(json.dumps(page), strict=False)), 1)
-        with patch.object(u, 'fetch_haoman', return_value=dict(records=u.parse_haoman(json.dumps(page), strict=False), unresolved_items=1)):
-            result = u.collect_source(next(s for s in u.SOURCES if s['id']=='haoman'), {}, NOW)
-            self.assertEqual(result['status'], 'partial')
-            self.assertEqual(result['unresolved_items'], 1)
-            self.assertEqual(len(result['records']), 1)
-
-    def test_haoman_abbreviated_month_and_am_time(self):
-        page = dict(items=[dict(id='1', title='Afterparty', body='Friday, Nov 6, 2026 Doors 2:00 am', fullUrl='/events/party')], pagination={})
-        r = u.parse_haoman(json.dumps(page))[0]
-        self.assertEqual((r['d'], r['k']), ('2026-11-06', '02:00'))
-
-    def test_haoman_pagination_does_not_assume_publication_order_is_event_order(self):
-        def page(day, pagination):
-            return json.dumps(dict(items=[dict(id=day, title='Party', body=day + ' Doors 23:55', fullUrl='/events/party')], pagination=pagination))
-        pages = [page('October 1, 2026', dict(nextPage=True, nextPageUrl='/events?offset=1')),
-                 page('November 6, 2026', dict(nextPage=False))]
-        with patch.object(u, 'fetch', side_effect=pages):
-            result = u.fetch_haoman(next(s for s in u.SOURCES if s['id']=='haoman'), NOW)
-        self.assertEqual(len(result['records']), 2)
-        self.assertEqual(result['records'][1]['d'], '2026-11-06')
-
-    def test_haoman_pagination_loop_is_a_failure(self):
-        page = json.dumps(dict(items=[], pagination=dict(nextPage=True, nextPageUrl='/events?format=json')))
-        with patch.object(u, 'fetch', return_value=page), self.assertRaises(ValueError):
-            u.fetch_haoman(next(s for s in u.SOURCES if s['id']=='haoman'), NOW)
-
-    def test_haoman_missing_event_date_is_a_parse_failure(self):
-        with self.assertRaises(ValueError):
-            u.parse_haoman(json.dumps(dict(items=[dict(body='Tickets soon', publishOn=1793172777307)], pagination={})))
-
-    def test_nearby_unknown_time_stays_planned(self):
-        g = u.build_games([record(source='haoman', venue='האומן 17', venue_id='haoman', kind='nightlife', k='', tentative=True)], NOW.date())[0]
-        self.assertFalse(g['c'])
-        self.assertIsNone(g['start'])
-
     def test_all_upstreams_failing_publish_partial_health(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(u, 'fetch', side_effect=TimeoutError('offline')):
             output, cache = Path(folder)/'games.json', Path(folder)/'cache.json'

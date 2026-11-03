@@ -274,6 +274,8 @@ async function load(){
   }catch(e){
     if(!DATA){try{DATA=ParkingData.validate(JSON.parse(localStorage.getItem("parking-data-v2")))}catch(e){}}
   }
+  // Retired source: also remove it from saved offline snapshots.
+  if(DATA){DATA.games=DATA.games.filter(g=>!g.sources.includes("haoman"));DATA.sources=DATA.sources.filter(s=>s.id!=="haoman")}
   loading=false;
   G=DATA?.games||[];upcoming=G.filter(g=>(g.end?ParkingData.dateAt(g.end):g.d)>=TODAY);
   if(wasLoading||previous!==JSON.stringify(DATA)||LAST_STATE!==ParkingData.assess(DATA,sel).state+"|"+ParkingData.assess(DATA,sel).reason)render();

@@ -28,3 +28,7 @@
 - Confirmed congestion remains red if another event is tentative, with warning; gray is reserved for actual planned/contradictory/stale events or inadequate independent fresh coverage.
 - No measured parking occupancy or calibrated probability. Preserve original UI design, Hebrew default, inline כנראה and subtle calendar pulse.
 - Local validation: 31 Python + 24 Node tests passed; a live pull returned 21 upcoming records including 3 Haoman dates. Production run 41617096002 succeeded (build, tests, pull, commit, Pages deploy). Live JSON at 2026-11-03T10:11:04Z: 4 full feeds, Haoman partial (73 undated historical posts excluded), 2 IFA feeds error403 with original 2026-11-02 success times. Nov6 match corroborated by stadium, city and Maccabi (3 publishers). Browser verified green Feb1 with provisional note, and Nov6 red with separate11:00–16:30 and22:55–24:00 windows; screenshot saved. Follow-up UI labels cached events stale in upcoming rows too.
+
+## User scope correction — Haoman removed
+
+User explicitly requested removing all Haoman 17 parties (star symbols in titles), because their parking impact is unproven. Source, records and cache removed; frontend filters retired events out of old offline snapshots. Current scope: six feeds / four publishers focused on Bloomfield. Do not reintroduce Haoman in future research or automated updates without a new user request. Earlier Haoman notes above are historical.
