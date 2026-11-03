@@ -45,7 +45,8 @@ jobs:
       - name: Prepare public website
         run: |
           mkdir -p dist
-          cp index.html data.js games.json parking-logo.png .nojekyll dist/
+          cp index.html data.js games.json parking-logo.png parking-share-v2.jpg .nojekyll dist/
+          python scripts/build_share.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
