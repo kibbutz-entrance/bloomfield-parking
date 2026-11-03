@@ -1,13 +1,15 @@
 {
   "schema": 2,
-  "updated": "2026-11-03T03:04:05+00:00",
-  "last_attempt": "2026-11-03T03:04:05+00:00",
+  "updated": "2026-11-03T10:11:04+00:00",
+  "last_attempt": "2026-11-03T10:11:04+00:00",
   "timezone": "Asia/Jerusalem",
   "fresh_hours": 2,
   "coverage": {
     "start": "2026-11-03",
-    "through": "2026-11-17",
-    "complete": true
+    "through": "2027-11-03",
+    "complete": true,
+    "basis": "published_schedules",
+    "detailed_through": "2026-11-17"
   },
   "sources": [
     {
@@ -16,8 +18,11 @@
       "url": "https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T03:04:05+00:00",
-      "last_success": "2026-11-03T03:04:05+00:00",
+      "checked_at": "2026-11-03T10:11:04+00:00",
+      "last_success": "2026-11-03T10:11:04+00:00",
+      "unresolved_items": 0,
+      "publisher": "stadium",
+      "scope": "stadium",
       "events_count": 38
     },
     {
@@ -26,8 +31,11 @@
       "url": "https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T03:04:05+00:00",
-      "last_success": "2026-11-03T03:04:05+00:00",
+      "checked_at": "2026-11-03T10:11:04+00:00",
+      "last_success": "2026-11-03T10:11:04+00:00",
+      "unresolved_items": 0,
+      "publisher": "stadium",
+      "scope": "stadium",
       "events_count": 6
     },
     {
@@ -36,9 +44,11 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=1061",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-03T03:04:05+00:00",
+      "checked_at": "2026-11-03T10:11:04+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
+      "publisher": "ifa",
+      "scope": "stadium",
       "events_count": 8
     },
     {
@@ -47,9 +57,11 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=2176",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-03T03:04:05+00:00",
+      "checked_at": "2026-11-03T10:11:04+00:00",
       "last_success": "2026-11-02T21:25:01+00:00",
       "error": "HTTPError: HTTP Error 403: Forbidden",
+      "publisher": "ifa",
+      "scope": "stadium",
       "events_count": 8
     },
     {
@@ -58,9 +70,25 @@
       "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T03:04:05+00:00",
-      "last_success": "2026-11-03T03:04:05+00:00",
+      "checked_at": "2026-11-03T10:11:04+00:00",
+      "last_success": "2026-11-03T10:11:04+00:00",
+      "unresolved_items": 0,
+      "publisher": "maccabi",
+      "scope": "stadium",
       "events_count": 11
+    },
+    {
+      "id": "haoman",
+      "label": "האומן 17 · לוח רשמי",
+      "url": "https://www.haoman17.com/events?format=json",
+      "required": false,
+      "status": "partial",
+      "checked_at": "2026-11-03T10:11:04+00:00",
+      "last_success": "2026-11-03T10:11:04+00:00",
+      "unresolved_items": 73,
+      "publisher": "haoman",
+      "scope": "nearby",
+      "events_count": 68
     },
     {
       "id": "city",
@@ -68,9 +96,12 @@
       "url": "https://sportlv.co.il/wp-json/tribe/events/v1/events",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-03T03:04:05+00:00",
-      "last_success": "2026-11-03T03:04:05+00:00",
-      "events_count": 2
+      "checked_at": "2026-11-03T10:11:04+00:00",
+      "last_success": "2026-11-03T10:11:04+00:00",
+      "unresolved_items": 0,
+      "publisher": "city",
+      "scope": "stadium",
+      "events_count": 3
     }
   ],
   "games": [
@@ -86,22 +117,187 @@
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
-        "he": "מכבי ת\"א - מכבי פ\"ת",
+        "he": "מכבי ת\"א-מכבי פ\"ת",
         "en": "Maccabi Tel Aviv vs Maccabi Petah Tikva"
       },
       "sources": [
         "city",
-        "ifa_maccabi",
         "maccabi",
         "stadium_sports"
       ],
       "references": [
         "https://sportlv.co.il/event/%d7%9e%d7%9b%d7%91%d7%99-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%9e%d7%9b%d7%91%d7%99-%d7%a4%d7%aa%d7%97-%d7%aa%d7%a7%d7%95%d7%95%d7%94/",
-        "https://www.football.org.il/leagues/games/game/?game_id=-1",
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
         "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/הפועל-ת-א-מכבי-פ-ת"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "אצטדיון בלומפילד",
+      "evidence": [
+        {
+          "source": "stadium_sports",
+          "publisher": "stadium",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-06",
+          "time": "14:00",
+          "venue": "אצטדיון בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/הפועל-ת-א-מכבי-פ-ת"
+        },
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-06",
+          "time": "14:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        },
+        {
+          "source": "city",
+          "publisher": "city",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-06",
+          "time": "14:00",
+          "venue": "אצטדיון בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://sportlv.co.il/event/%d7%9e%d7%9b%d7%91%d7%99-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%9e%d7%9b%d7%91%d7%99-%d7%a4%d7%aa%d7%97-%d7%aa%d7%a7%d7%95%d7%95%d7%94/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 3,
+      "verification": "cross_checked"
+    },
+    {
+      "id": "e568794884760fd3",
+      "d": "2026-11-06",
+      "k": "23:55",
+      "s": "22:55",
+      "e": "05:55",
+      "start": "2026-11-06T22:55:00+02:00",
+      "end": "2026-11-07T05:55:00+02:00",
+      "c": true,
+      "conflict": false,
+      "venue_unconfirmed": false,
+      "t": {
+        "he": "Luli ✦Nov 6",
+        "en": "Luli ✦Nov 6"
+      },
+      "sources": [
+        "haoman"
+      ],
+      "references": [
+        "https://www.haoman17.com/events/luli-november-2026"
+      ],
+      "kind": "nightlife",
+      "venue": "האומן 17",
+      "evidence": [
+        {
+          "source": "haoman",
+          "publisher": "haoman",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-06",
+          "time": "23:55",
+          "venue": "האומן 17",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.haoman17.com/events/luli-november-2026"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 1,
+      "verification": "official"
+    },
+    {
+      "id": "83ac61405f5179a6",
+      "d": "2026-11-13",
+      "k": "23:59",
+      "s": "22:59",
+      "e": "05:59",
+      "start": "2026-11-13T22:59:00+02:00",
+      "end": "2026-11-14T05:59:00+02:00",
+      "c": true,
+      "conflict": false,
+      "venue_unconfirmed": false,
+      "t": {
+        "he": "Pag TLV ✦ Nov 13",
+        "en": "Pag TLV ✦ Nov 13"
+      },
+      "sources": [
+        "haoman"
+      ],
+      "references": [
+        "https://www.haoman17.com/events/pag-november-2026"
+      ],
+      "kind": "nightlife",
+      "venue": "האומן 17",
+      "evidence": [
+        {
+          "source": "haoman",
+          "publisher": "haoman",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-13",
+          "time": "23:59",
+          "venue": "האומן 17",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.haoman17.com/events/pag-november-2026"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 1,
+      "verification": "official"
+    },
+    {
+      "id": "1f97a1486efba6c6",
+      "d": "2026-11-20",
+      "k": "",
+      "s": "",
+      "e": "",
+      "start": null,
+      "end": null,
+      "c": false,
+      "conflict": false,
+      "venue_unconfirmed": false,
+      "t": {
+        "he": "Forever TLV ✦ Nov 20",
+        "en": "Forever TLV ✦ Nov 20"
+      },
+      "sources": [
+        "haoman"
+      ],
+      "references": [
+        "https://www.haoman17.com/events/forever-november-20-anniversary"
+      ],
+      "kind": "nightlife",
+      "venue": "האומן 17",
+      "evidence": [
+        {
+          "source": "haoman",
+          "publisher": "haoman",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-20",
+          "time": "",
+          "venue": "האומן 17",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.haoman17.com/events/forever-november-20-anniversary"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "740f178595324cf8",
@@ -115,20 +311,64 @@
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
-        "he": "מכבי ת\"א - הפועל פ\"ת",
+        "he": "מכבי ת\"א-הפועל פ\"ת",
         "en": "Maccabi Tel Aviv vs Hapoel Petah Tikva"
       },
       "sources": [
-        "ifa_maccabi",
+        "city",
         "maccabi",
         "stadium_sports"
       ],
       "references": [
-        "https://www.football.org.il/leagues/games/game/?game_id=-1",
+        "https://sportlv.co.il/event/%d7%9e%d7%9b%d7%91%d7%99-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%a4%d7%aa%d7%97-%d7%aa%d7%a7%d7%95%d7%95%d7%94/",
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
         "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/מכבי-ת-א-עירוני-קריית-אתא-3"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "אצטדיון בלומפילד",
+      "evidence": [
+        {
+          "source": "stadium_sports",
+          "publisher": "stadium",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-28",
+          "time": "19:00",
+          "venue": "אצטדיון בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/מכבי-ת-א-עירוני-קריית-אתא-3"
+        },
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-28",
+          "time": "19:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        },
+        {
+          "source": "city",
+          "publisher": "city",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-11-28",
+          "time": "19:00",
+          "venue": "אצטדיון בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://sportlv.co.il/event/%d7%9e%d7%9b%d7%91%d7%99-%d7%aa%d7%9c%d6%be%d7%90%d7%91%d7%99%d7%91-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%a4%d7%aa%d7%97-%d7%aa%d7%a7%d7%95%d7%95%d7%94/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 3,
+      "verification": "cross_checked"
     },
     {
       "id": "dee170a6887387e0",
@@ -151,7 +391,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2026-12-03",
+          "time": "20:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "13d59c21e0a1a2af",
@@ -165,18 +423,36 @@
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
-        "he": "מכבי ת\"א - עירוני דורות טבריה",
+        "he": "מכבי תל אביב – עירוני טבריה",
         "en": "Maccabi Tel Aviv vs Ironi Tiberias"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
-        "https://www.football.org.il/leagues/games/game/?game_id=-1",
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-12-05",
+          "time": "15:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 1,
+      "verification": "official"
     },
     {
       "id": "3330f29570d1c9d4",
@@ -190,18 +466,36 @@
       "conflict": false,
       "venue_unconfirmed": false,
       "t": {
-        "he": "מכבי ת\"א - הפועל י-ם",
+        "he": "מכבי תל אביב – הפועל ירושלים",
         "en": "Maccabi Tel Aviv vs Hapoel Jerusalem"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
-        "https://www.football.org.il/leagues/games/game/?game_id=-1",
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-12-12",
+          "time": "19:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 1,
+      "verification": "official"
     },
     {
       "id": "d00229a5986e8365",
@@ -224,7 +518,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2026-12-19",
+          "time": "15:00",
+          "venue": "בלומפילד",
+          "tentative": false,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "ca027a3973338d57",
@@ -247,7 +559,25 @@
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-12-26",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "e6d9f83a95578a9b",
@@ -265,13 +595,32 @@
         "en": "Maccabi Tel Aviv vs Hapoel Be'er Sheva"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2026-12-29",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "f6acfc524fa89d25",
@@ -289,14 +638,33 @@
         "en": "Maccabi Tel Aviv vs Hapoel Tel Aviv"
       },
       "sources": [
-        "ifa_hapoel",
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2027-01-02",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_hapoel",
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "4f731714a3b6cf27",
@@ -314,13 +682,32 @@
         "en": "Maccabi Tel Aviv vs Maccabi Netanya"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2027-01-09",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "26703079afc79e69",
@@ -343,7 +730,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2027-01-16",
+          "time": "",
+          "venue": "",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "b350f5dd9d7e63f6",
@@ -361,13 +766,32 @@
         "en": "Maccabi Tel Aviv vs Beitar Jerusalem"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2027-01-23",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "c325dfece4ef6dcc",
@@ -390,7 +814,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2027-01-30",
+          "time": "",
+          "venue": "",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "0d32253fadc1fa17",
@@ -408,13 +850,32 @@
         "en": "Maccabi Tel Aviv vs Hapoel Ramat Gan"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2027-02-06",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "37407655a9801aa3",
@@ -437,7 +898,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2027-02-13",
+          "time": "",
+          "venue": "",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "0e107f004813777d",
@@ -460,7 +939,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2027-02-20",
+          "time": "",
+          "venue": "",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     },
     {
       "id": "9b4f84124091361e",
@@ -478,13 +975,32 @@
         "en": "Maccabi Tel Aviv vs Ironi Kiryat Shmona"
       },
       "sources": [
-        "ifa_maccabi",
         "maccabi"
       ],
       "references": [
         "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "בלומפילד",
+      "evidence": [
+        {
+          "source": "maccabi",
+          "publisher": "maccabi",
+          "observed_at": "2026-11-03T10:11:04+00:00",
+          "current": true,
+          "date": "2027-02-27",
+          "time": "",
+          "venue": "בלומפילד",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/"
+        }
+      ],
+      "ignored_cached_sources": [
+        "ifa_maccabi"
+      ],
+      "independent_publishers": 0,
+      "verification": "planned"
     },
     {
       "id": "d0db4d68cf363056",
@@ -507,7 +1023,25 @@
       "references": [
         "https://www.football.org.il/leagues/games/game/?game_id=-1"
       ],
-      "kind": "sport"
+      "kind": "sport",
+      "venue": "",
+      "evidence": [
+        {
+          "source": "ifa_hapoel",
+          "publisher": "ifa",
+          "observed_at": "2026-11-02T21:25:01+00:00",
+          "current": false,
+          "date": "2027-03-06",
+          "time": "",
+          "venue": "",
+          "tentative": true,
+          "cancelled": false,
+          "url": "https://www.football.org.il/leagues/games/game/?game_id=-1"
+        }
+      ],
+      "ignored_cached_sources": [],
+      "independent_publishers": 0,
+      "verification": "cached"
     }
   ],
   "parking_window": {
