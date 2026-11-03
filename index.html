@@ -130,11 +130,11 @@ h2{font-size:15px;font-weight:600;margin:24px 4px 10px;color:var(--mute)}
 <script src="data.js"></script>
 <script>
 const TX={
-he:{title:"חניה באזור הקיבוץ",q:"איזה יום?",today:"היום",tom:"מחר",other:"יום אחר",free:"יש חניה",nogame:"לא מופיע אירוע בבלומפילד",next:"המשחק הבא:",block:"אין חניה",pre:"כנראה",between:"בין {a} ל-{b}",spec:"משחק בשעה מיוחדת",backToday:"חזרה להיום",prev:"היום הקודם",nxt:"היום הבא",game:"אירוע ב-",upd:"עודכן",est:"שעה משוערת",add:"הוספה ליומן",added:"נוסף ליומן",upc:"האירועים הקרובים",all:"הוספת האירועים עם שעה ליומן",noP:"אין חניה",none:"אין כרגע אירועים ברשימה",lang:"EN",loc:"he-IL",calT:"אין חניה בקיבוץ",vs:" – ",back:"חזרה",ics:"הקובץ ירד – פתחו אותו כדי להוסיף ליומן",opened:"נפתח ביומן"},
-en:{title:"Parking near the kibbutz",q:"Which day?",today:"Today",tom:"Tomorrow",other:"Other day",free:"parking available",nogame:"No published event at Bloomfield",next:"Next game:",block:"no parking",pre:"Probably",between:"between {a} and {b}",spec:"unusual game time",backToday:"Back to today",prev:"Previous day",nxt:"Next day",game:"Event at ",upd:"Updated",est:"est. time",add:"Add to calendar",added:"Added",upc:"Upcoming events",all:"Add scheduled events to calendar",noP:"No parking",none:"No events currently listed",lang:"עב",loc:"en-GB",calT:"No parking at the kibbutz",vs:" vs ",back:"Back",ics:"File downloaded – open it to add to your calendar",opened:"Opened in calendar"}};
+he:{title:"חניה באזור הקיבוץ",q:"איזה יום?",today:"היום",tom:"מחר",other:"יום אחר",free:"יש חניה",nogame:"לא נמצא אירוע בלוחות שנבדקו",next:"המשחק הבא:",block:"אין חניה",pre:"כנראה",between:"בין {a} ל-{b}",spec:"משחק בשעה מיוחדת",backToday:"חזרה להיום",prev:"היום הקודם",nxt:"היום הבא",game:"אירוע ב-",upd:"עודכן",est:"שעה משוערת",add:"הוספה ליומן",added:"נוסף ליומן",upc:"האירועים הקרובים",all:"הוספת האירועים עם שעה ליומן",noP:"אין חניה",none:"אין כרגע אירועים ברשימה",lang:"EN",loc:"he-IL",calT:"אין חניה בקיבוץ",vs:" – ",back:"חזרה",ics:"הקובץ ירד – פתחו אותו כדי להוסיף ליומן",opened:"נפתח ביומן"},
+en:{title:"Parking near the kibbutz",q:"Which day?",today:"Today",tom:"Tomorrow",other:"Other day",free:"parking available",nogame:"No event found in the checked schedules",next:"Next game:",block:"no parking",pre:"Probably",between:"between {a} and {b}",spec:"unusual game time",backToday:"Back to today",prev:"Previous day",nxt:"Next day",game:"Event at ",upd:"Updated",est:"est. time",add:"Add to calendar",added:"Added",upc:"Upcoming events",all:"Add scheduled events to calendar",noP:"No parking",none:"No events currently listed",lang:"עב",loc:"en-GB",calT:"No parking at the kibbutz",vs:" vs ",back:"Back",ics:"File downloaded – open it to add to your calendar",opened:"Opened in calendar"}};
 const EXTRA={
-he:{planned:"יש משחק מתוכנן",plannedEvent:"יש אירוע מתוכנן",loading:"בודק מידע",unknown:"אין מידע מספיק",tentative:"ייתכן עומס",unavailable:"לא הצלחתי לקבל מידע עדכני",stale:"המידע חלקי או לא עדכני",horizon:"התאריך רחוק מדי לקביעה שאין אירוע",conflict:"יש אי־התאמה בין המקורות — כדאי לבדוק",timeTbd:"השעה או המועד עדיין לא סופיים",checking:"בודק את לוחות האירועים",sources:"מקורות ועדכניות",estimate:"הערכת חניה לפי אירועים שפורסמו; לא מדידה של חניות פנויות.",windowEstimate:"חלון עומס משוער",nextDay:"למחרת",sourceOk:"נבדק",sourceError:"לא זמין כרגע",never:"טרם התקבל מידע",noTimed:"אין כרגע אירועים עם שעה סופית",limited:"לא כל המקורות זמינים"},
-en:{planned:"Match scheduled",plannedEvent:"Event scheduled",loading:"Checking schedules",unknown:"Not enough information",tentative:"Possible congestion",unavailable:"Could not obtain current information",stale:"Information is partial or out of date",horizon:"Too far ahead to rule out an event",conflict:"Sources disagree — please check",timeTbd:"Time or date is not final yet",checking:"Checking published event schedules",sources:"Sources and freshness",estimate:"Parking estimate based on published events; no measurement of available spaces.",windowEstimate:"Estimated congestion window",nextDay:"next day",sourceOk:"Checked",sourceError:"Currently unavailable",never:"No successful check yet",noTimed:"No events with a confirmed time yet",limited:"Some sources are unavailable"}};
+he:{additionalPlanned:"מופיע גם אירוע נוסף שפרטיו עדיין לא סופיים",sourcePartial:"מידע חלקי — פרסומים ללא תאריך מלא לא נכללו",provisional:"לפי הלוחות שפורסמו עד כה; התאריך רחוק ועוד ייתכנו שינויים",partial:"הערכה לפי כמה מקורות עדכניים; חלק מהמקורות אינם זמינים",crossChecked:"האירוע הוצלב בין מפרסמים עצמאיים",official:"פרטי האירוע לפי מקור רשמי",planned:"יש משחק מתוכנן",plannedEvent:"יש אירוע מתוכנן",loading:"בודק מידע",unknown:"אין מידע מספיק",tentative:"ייתכן עומס",unavailable:"לא הצלחתי לקבל מידע עדכני",stale:"המידע חלקי או לא עדכני",horizon:"התאריך רחוק מדי לקביעה שאין אירוע",conflict:"יש אי־התאמה בין המקורות — כדאי לבדוק",timeTbd:"השעה או המועד עדיין לא סופיים",checking:"בודק את לוחות האירועים",sources:"מקורות ועדכניות",estimate:"הערכת חניה לפי אירועים שפורסמו; לא מדידה של חניות פנויות.",windowEstimate:"חלון עומס משוער",nextDay:"למחרת",sourceOk:"נבדק",sourceError:"לא זמין כרגע",never:"טרם התקבל מידע",noTimed:"אין כרגע אירועים עם שעה סופית",limited:"לא כל המקורות זמינים"},
+en:{additionalPlanned:"An additional event has details still to be confirmed",sourcePartial:"Partial — posts without full dates excluded",provisional:"Based on schedules published so far; future plans may change",partial:"Based on several current sources; some sources are unavailable",crossChecked:"Event cross-checked across independent publishers",official:"Event details from an official source",planned:"Match scheduled",plannedEvent:"Event scheduled",loading:"Checking schedules",unknown:"Not enough information",tentative:"Possible congestion",unavailable:"Could not obtain current information",stale:"Information is partial or out of date",horizon:"Too far ahead to rule out an event",conflict:"Sources disagree — please check",timeTbd:"Time or date is not final yet",checking:"Checking published event schedules",sources:"Sources and freshness",estimate:"Parking estimate based on published events; no measurement of available spaces.",windowEstimate:"Estimated congestion window",nextDay:"next day",sourceOk:"Checked",sourceError:"Currently unavailable",never:"No successful check yet",noTimed:"No events with a confirmed time yet",limited:"Some sources are unavailable"}};
 let DATA=null,G=[],loading=true,LAST_STATE="";
 const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const safeUrl=value=>{try{const u=new URL(value);return u.protocol==="https:"?u.href:"#"}catch(e){return "#"}};
@@ -151,7 +151,7 @@ const T=k=>TX[lang][k]??EXTRA[lang][k];
 const longDate=iso=>dt(iso).toLocaleDateString(T("loc"),{weekday:"long",day:"numeric",month:"long"});
 const nameIn=(g,l)=>g.t?.[l]||g.t?.he||"";
 const name=g=>esc(nameIn(g,lang));
-const validCalendar=g=>!!g?.start&&!!g.end&&g.c&&!g.conflict&&g.sources.some(id=>{const source=DATA?.sources.find(s=>s.id===id);return source?.status==="ok"&&ParkingData.fresh(source.last_success,Date.now(),2)});
+const validCalendar=g=>!!g?.start&&!!g.end&&g.c&&!g.conflict&&g.sources.some(id=>{const source=DATA?.sources.find(s=>s.id===id);return ParkingData.sourceFresh(DATA,id,Date.now())});
 const calendarDetails=g=>`${T("windowEstimate")}: ${g.s}–${g.e}. ${T("estimate")}\n${(g.references||[]).join("\n")}`;
 const eventWindow=g=>g.start&&g.end?`<bdi>${g.s}–${g.e}</bdi>${ParkingData.dateAt(g.start)!==ParkingData.dateAt(g.end)?` (${T("nextDay")})`:""}`:T("timeTbd");
 const I={
@@ -172,7 +172,7 @@ function provenance(){
   const sources=DATA?.sources||[];
   const checked=sources.filter(s=>s.status==="ok"&&ParkingData.fresh(s.last_success,Date.now(),2)).length;
   const updated=UPDATED?new Date(UPDATED).toLocaleString(T("loc"),{timeZone:"Asia/Jerusalem",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):T("never");
-  return `<details class="provenance"><summary>${T("sources")}</summary><p class="upd">${T("upd")} ${esc(updated)} · ${checked}/${sources.length}</p><ul>${sources.map(s=>`<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a> · ${T(s.status==="ok"&&ParkingData.fresh(s.last_success,Date.now(),2)?"sourceOk":"sourceError")}</li>`).join("")}</ul><p>${T("estimate")}</p></details>`;
+  return `<details class="provenance"><summary>${T("sources")}</summary><p class="upd">${T("upd")} ${esc(updated)} · ${checked}/${sources.length}</p><ul>${sources.map(s=>`<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a> · ${T(ParkingData.sourceFresh(DATA,s.id,Date.now())?(s.status==="partial"?"sourcePartial":"sourceOk"):"sourceError")} · ${s.last_success?esc(new Date(s.last_success).toLocaleString(T("loc"),{timeZone:"Asia/Jerusalem",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})):T("never")}</li>`).join("")}</ul><p>${T("estimate")}</p></details>`;
 }
 function listHTML(){
   const rows=upcoming.map(g=>{
@@ -200,16 +200,18 @@ function render(){
     sig="--mute";ink="--mute";icon=I.clock;title=T("unknown");tiny=T(assessment.reason);prefix="";
   }else if(g){
     const tentative=assessment.state==="tentative";
-    title=T(tentative?(selected.every(e=>e.kind==="culture")?"plannedEvent":"planned"):"block");prefix=tentative?"":T("pre");
+    title=T(tentative?(selected.every(e=>e.kind!=="sport")?"plannedEvent":"planned"):"block");prefix=tentative?"":T("pre");
     const evening=assessment.windows.length&&+assessment.windows[0][0].slice(0,2)>=16;
     sig=tentative?"--mute":"--red";ink=tentative?"--mute":"--red-ink";icon=tentative?I.clock:I.x;
     win=assessment.windows.length?assessment.windows.map(([a,b])=>T("between").replace("{a}",`<bdi>${a}</bdi>`).replace("{b}",`<bdi>${b}</bdi>`)).join(" · "):T("timeTbd");
     tiny=selected.map(e=>`${e.k?T("game")+e.k+" · ":""}${name(e)}`).join(" + ");
     tiny+=`<br>${T("windowEstimate")}${assessment.reason?" · "+T(assessment.reason==="tentative"?"timeTbd":assessment.reason):""}`;
+    if(!tentative)tiny+=`<br>${T(selected.filter(e=>e.c&&!e.conflict).every(e=>e.verification==="cross_checked")?"crossChecked":"official")}`;
   }else{
     win=T("nogame");
     const nx=upcoming.find(x=>x.d>sel);
-    if(nx)tiny=`${T("next")} <button class="link sm" style="margin:0" data-d="${nx.d}" type="button">${longDate(nx.d)}</button>`;
+    if(assessment.reason)tiny=T(assessment.reason);
+    if(nx)tiny+=(tiny?"<br>":"")+`${T("next")} <button class="link sm" style="margin:0" data-d="${nx.d}" type="button">${longDate(nx.d)}</button>`;
   }
   const hint=!hinted;hinted=true;
   const rel=sel===TODAY?T("today")+" · ":sel===TOMORROW?T("tom")+" · ":"";
