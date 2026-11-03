@@ -32,3 +32,7 @@
 ## User scope correction — Haoman removed
 
 User explicitly requested removing all Haoman 17 parties (star symbols in titles), because their parking impact is unproven. Source, records and cache removed; frontend filters retired events out of old offline snapshots. Current scope: six feeds / four publishers focused on Bloomfield. Do not reintroduce Haoman in future research or automated updates without a new user request. Earlier Haoman notes above are historical.
+
+## WhatsApp sharing
+
+Added a blue P parking icon (parking-logo.png), favicon/Apple touch icon and static Hebrew Open Graph metadata for WhatsApp previews. Workflow must copy the PNG to dist. WhatsApp may cache previously shared previews; metadata is served in the initial HTML without JavaScript.
