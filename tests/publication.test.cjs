@@ -29,3 +29,12 @@ test('total source outage is publishable without inventing fresh success',()=>fi
   data.coverage.complete=false;save();fs.writeFileSync(cacheFile,JSON.stringify(c));
   assert(validateSite(dir,cacheFile,now));
 }));
+
+test('an overnight event beginning yesterday still belongs to today',()=>fixture(({dir,cacheFile,data,now,save})=>{
+  const today=data.coverage.start;
+  const yesterday=new Date(Date.parse(today+'T12:00:00Z')-86400000).toISOString().slice(0,10);
+  data.games[0].d=yesterday;
+  data.games[0].start=yesterday+'T23:00:00+02:00';
+  data.games[0].end=today+'T02:00:00+02:00';
+  save();assert(validateSite(dir,cacheFile,now));
+}));

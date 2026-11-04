@@ -107,3 +107,19 @@ jobs:
           name: source-snapshot
       - name: Save with bounded retries and revision protection
         run: python scripts/persist_snapshot.py
+  verify:
+    name: Verify public website
+    needs: deploy
+    if: needs.deploy.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: source-snapshot
+      - name: Check deployed schedule and sharing assets on public CDN
+        run: python scripts/verify_live.py

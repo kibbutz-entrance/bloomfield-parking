@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
-const {validate} = require('../data.js');
+const {validate,dateAt} = require('../data.js');
 function validateSite(dir, cacheFile, now=Date.now()) {
   const read = name => fs.readFileSync(path.join(dir,name));
   for(const name of ['index.html','share.html','data.js','games.json','parking-logo.png','parking-share-v2.jpg','.nojekyll']) read(name);
@@ -32,7 +32,7 @@ function validateSite(dir, cacheFile, now=Date.now()) {
   }
   for(const g of data.games) {
     assert(g.sources.length && g.sources.every(id=>ids.includes(id)),'Unknown event source');
-    assert(g.d>=data.coverage.start && g.d<=data.coverage.through,'Event outside coverage');
+    assert((g.d>=data.coverage.start || (g.end && dateAt(Date.parse(g.end)-1)>=data.coverage.start)) && g.d<=data.coverage.through,'Event outside coverage');
   }
   // Source outages are valid health data. They must still be published.
   return data;
