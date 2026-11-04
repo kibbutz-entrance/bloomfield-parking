@@ -60,3 +60,22 @@ node --test tests/data.test.cjs
 הוסרו חסימת הירוק הגורפת מעבר ל־14 יום והדרישה להצלחת כל פיד ליבה. נוספו מניין מפרסמים עצמאיים, קדימות לעדכון נוכחי על פני עותק ממקור כושל, ראיות לכל אירוע, פענוח חלקי מפורש, טווח משיכה של שנה לרשות העירונית והאומן 17. בדיקה חיה מקומית החזירה אירועים רשמיים; הפריסה אומתה בריצה 41617096002: ארבעה פידים מלאים, האומן חלקי ושני פידי ההתאחדות חסומים עם גיל העותק המקורי. המשחק ב־6 בנובמבר הוצלב בין שלושה מפרסמים נוכחיים. 31 בדיקות Python ו־24 בדיקות Node עברו; נבדקו באתר יום ירוק רחוק, שני חלונות עומס נפרדים ויום עם אירוע לא סופי. הבדיקות מכסות כשל רחב, קוורום, כפל ספקים, סתירות, שינוי שעה/מקום/תאריך, ביטול, מקור חלקי, מועדים לא סופיים וחציית חצות.
 
 האומן 17 הוסר לבקשת המשתמש: אין הוכחה מספקת להשפעת האירועים שלו על החניה ביעד. אירועיו אינם נמשכים או מוצגים, גם בעותקים שמורים במכשיר. אין להחזיר את המקור ללא בקשת המשתמש.
+
+
+
+### Deployment and backup recovery
+
+The workflow validates the generated website, uploads the Pages package and a seven-day
+`source-snapshot` artifact, and deploys only if its repository revision is still current.
+Repository backup saving runs as a separate job after deployment. It retries temporary
+Git failures, detects a push that succeeded despite a lost response, and never overwrites
+a competing revision. A failed backup job means the website may already be updated;
+check the deploy job before retrying. The artifact contains `games.json` and
+`data/source-cache.json` for recovery. A newer main revision owns the next refresh.
+
+Run `python -m unittest discover -s tests -p 'test_*.py'` and
+`node --test tests/*.test.cjs` for deterministic validation. The workflow additionally
+runs `node scripts/validate_site.cjs dist data/source-cache.json` AFTER fetching live data
+and preparing `share.html`. Source outages are valid publishable health states; malformed
+packages and unverifiable revisions stop publication. GitHub cron is best effort;
+source timestamps, rather than the configured interval, determine the two-hour freshness rule.

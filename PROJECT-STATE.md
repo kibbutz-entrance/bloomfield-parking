@@ -36,3 +36,14 @@ User explicitly requested removing all Haoman 17 parties (star symbols in titles
 ## WhatsApp sharing
 
 Added a blue P parking icon (parking-logo.png), favicon/Apple touch icon and static Hebrew Open Graph metadata for WhatsApp previews. Workflow must copy the PNG to dist. WhatsApp may cache previously shared previews; metadata is served in the initial HTML without JavaScript.
+
+
+
+## Deployment recovery — 2026-11-04
+
+- Run 41740864877 passed 24 Python/24 Node tests and collected 18 events (four healthy core feeds), then GitHub rejected the data push with Internal Server Error. Publication was skipped because saving the backup was on the critical path. Run 41765912771 subsequently recovered.
+- Publication now builds and validates the actual dist package before deploying. A source snapshot artifact is retained for seven days. Repository persistence is a separate job AFTER successful deployment; its failures remain visible without undoing deployment.
+- Persistence uses bounded retries, checks the remote after ambiguous pushes, and skips safely if main has advanced. No force-push/rebase of stale generated data. The deploy job fetches main with bounded retries and skips superseded revisions before starting Pages deployment. Workflow runs remain serialized.
+- Least privilege: read-only build, Pages permissions only in deploy, contents write only in persistence. Freshness remains two hours; source outages still publish honest health and original evidence ages.
+- Local validation: 31 Python + 30 Node tests, including seven local-bare-repository persistence failure/race tests and six generated-package checks. Production verification is recorded in the delivery conversation.
+- The cron remains minutes 13 and 43. GitHub scheduling is best effort; this change does not guarantee a 30-minute execution interval or cure upstream IFA HTTP 403. No external scheduler or paid service added.

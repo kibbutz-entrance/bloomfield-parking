@@ -11,9 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 jobs:
   build:
@@ -30,34 +28,82 @@ jobs:
       - name: Verify parser and reliability rules
         run: |
           python -m unittest discover -s tests -p 'test_*.py'
-          node --test tests/data.test.cjs
+          node --test tests/*.test.cjs
       - name: Pull official public sources
         run: python scripts/update_games.py
-      - name: Save last successful responses and current health
-        run: |
-          git config user.name 'parking-bot'
-          git config user.email 'parking-bot@users.noreply.github.com'
-          git add games.json data/source-cache.json
-          if ! git diff --cached --quiet; then
-            git commit -m 'Refresh official event schedules [skip ci]'
-            git push
-          fi
       - name: Prepare public website
         run: |
           mkdir -p dist
           cp index.html data.js games.json parking-logo.png parking-share-v2.jpg .nojekyll dist/
           python scripts/build_share.py
-      - uses: actions/configure-pages@v5
+          node scripts/validate_site.cjs dist data/source-cache.json
+      - name: Preserve snapshot independently of repository writes
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-snapshot
+          path: |
+            games.json
+            data/source-cache.json
+          retention-days: 7
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    outputs:
+      published: ${{ steps.deployment.outcome == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - name: Reject a superseded publication
+        id: revision
+        run: |
+          fetched=false
+          for wait in 2 4 8; do
+            if git fetch --no-tags origin main; then
+              fetched=true
+              break
+            fi
+            sleep "$wait"
+          done
+          if [ "$fetched" != true ]; then
+            echo '::error::Cannot verify current main; publication stopped safely.'
+            exit 1
+          fi
+          if [ "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" ]; then
+            echo 'current=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'current=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::Publication skipped: main advanced; the newer revision owns deployment.'
+            echo 'Publication skipped because main advanced.' >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Deploy GitHub Pages
+        if: steps.revision.outputs.current == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+  persist:
+    name: Save source snapshot (after deployment)
+    needs: deploy
+    if: needs.deploy.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: source-snapshot
+      - name: Save with bounded retries and revision protection
+        run: python scripts/persist_snapshot.py
