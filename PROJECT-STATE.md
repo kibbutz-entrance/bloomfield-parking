@@ -49,3 +49,10 @@ Added a blue P parking icon (parking-logo.png), favicon/Apple touch icon and sta
 - The cron remains minutes 13 and 43. GitHub scheduling is best effort; this change does not guarantee a 30-minute execution interval or cure upstream IFA HTTP 403. No external scheduler or paid service added.
 
 - Independent post-deploy verification fetches public games.json and compares it with the exact run snapshot, then checks both HTML pages and sharing/icon assets, with bounded CDN propagation retries.
+
+## Scheduler-gap repair — 2026-11-07
+
+- Observed successful scheduled runs at 02:21, 09:14 and 15:54 UTC, despite the requested half-hour cron. The latest snapshot was healthy but over two hours old at the user report, making every date unknown/tentative. No parser or deployment failure was found in those runs.
+- Keep two-hour freshness indicators, but permit successful schedule evidence up to 24 hours old for qualified estimates, with an explicit Hebrew/English delayed-update warning. Original source timestamps remain unchanged. Failed sources, conflicts, missing times, independent-publisher quorum and maximum coverage limits remain enforced; older-than-24h evidence is not usable. Calendar exports still require two-hour freshness.
+- UI re-renders when the delay flag changes, and versions the data script to avoid old browser caches. Both index and share pages are generated from the same source.
+- Regression checks cover observed 3/7/12/23-hour scheduling gaps, exact 24-hour expiry, known matches, conflicts and actual source failures. GitHub cron remains best effort; this patch does not guarantee its execution frequency.
