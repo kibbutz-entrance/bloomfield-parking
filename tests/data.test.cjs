@@ -8,7 +8,7 @@ test('never show an all-clear while loading or after complete failure',()=>asser
 test('fresh official coverage permits a probable clear day',()=>assert.equal(P.assess(data(),'2026-11-03',now).state,'clear'));
 test('one failed city feed still permits a qualified estimate from independent schedules',()=>{let d=data();d.sources.find(s=>s.id==='city').status='error';assert.equal(P.assess(d,'2026-11-03',now).state,'clear');assert.equal(P.assess(d,'2026-11-03',now).reason,'partial')});
 test('optional IFA failure is visible without disabling verified core coverage',()=>{let d=data();d.sources.find(s=>s.id==='ifa_hapoel').status='error';assert.equal(P.assess(d,'2026-11-03',now).state,'clear')});
-test('old data cannot show green',()=>assert.equal(P.assess(data(),'2026-11-03',now+25*3600000).state,'unknown'));
+test('published schedules remain useful after a day without refresh',()=>{const a=P.assess(data(),'2026-11-03',now+25*3600000);assert.equal(a.state,'clear');assert.equal(a.delayed,true)});
 test('one missing operator feed does not blank all no-event days',()=>{let d=data();d.sources[0].status='error';assert.equal(P.assess(d,'2026-11-03',now).state,'clear')});
 test('distant dates get a provisional estimate from published schedules',()=>{assert.equal(P.assess(data(),'2027-02-01',now).state,'clear');assert.equal(P.assess(data(),'2027-02-01',now).reason,'provisional')});
 test('an old source lowers certainty while other independent publishers work',()=>{let d=data();d.sources[0].last_success='2026-10-30T00:00:00Z';assert.equal(P.assess(d,'2026-11-03',now).reason,'partial')});
@@ -17,7 +17,7 @@ test('midnight event covers both dates',()=>{let d=data([game()]);assert.equal(P
 test('end at midnight does not occupy the following day',()=>{let d=data([game({end:'2026-11-07T00:00:00+02:00'})]);assert.equal(P.eventsForDay(d,'2026-11-07').length,0)});
 test('unannounced kickoff stays tentative',()=>assert.equal(P.assess(data([game({start:null,end:null,k:'',c:false})]),'2026-11-06',now).state,'tentative'));
 test('conflicting sources stay tentative',()=>assert.equal(P.assess(data([game({conflict:true})]),'2026-11-06',now).state,'tentative'));
-test('stale known event is explicitly uncertain',()=>assert.equal(P.assess(data([game()]),'2026-11-06',now+25*3600000).reason,'stale'));
+test('known timed event remains a probable busy window despite its age',()=>assert.equal(P.assess(data([game()]),'2026-11-06',now+25*3600000).state,'busy'));
 test('separate events do not invent a continuous all-day window',()=>{let games=[game({start:'2026-11-06T08:00:00+02:00',end:'2026-11-06T10:00:00+02:00'}),game({id:'2',start:'2026-11-06T18:00:00+02:00',end:'2026-11-06T20:00:00+02:00'})];assert.deepEqual(P.windows(games,'2026-11-06'),[['08:00','10:00'],['18:00','20:00']])});
 test('invalid or legacy JSON cannot become authoritative data',()=>{assert.throws(()=>P.validate({games:[]}));assert.throws(()=>P.validate(data([game({end:'bad'})])))});
 test('Israeli day is independent of the browser time zone',()=>assert.equal(P.dateAt('2026-11-02T23:15:00Z'),'2026-11-03'));
@@ -52,8 +52,23 @@ test('grace period never masks observed source failures',()=>{
 test('delay cannot override conflicting event details',()=>{
   assert.equal(P.assess(data([game({conflict:true})]),'2026-11-06',now+7*3600000).state,'tentative');
 });
-test('24 hour limit uses actual source success, including its exact boundary',()=>{
+test('crossing 24 hours does not erase schedule evidence',()=>{
   const d=data(), time=Date.parse(d.sources[0].last_success)+24*3600000;
   assert.equal(P.assess(d,'2026-11-03',time).state,'clear');
-  assert.equal(P.assess(d,'2026-11-03',time+1).state,'unknown');
+  assert.equal(P.assess(d,'2026-11-03',time+1).state,'clear');
+});
+
+test('failed refresh retains previously complete independent schedules',()=>{
+ const d=data();d.sources.forEach(s=>{s.status='error';s.last_success_status='ok'});
+ const a=P.assess(d,'2026-11-06',now+3*86400000);assert.equal(a.state,'clear');assert.equal(a.delayed,true);
+});
+test('cached partial parses cannot establish absence',()=>{
+ const d=data();d.sources.forEach(s=>{s.status='error';s.last_success_status='partial'});
+ assert.equal(P.assess(d,'2026-11-06',now).state,'unknown');
+});
+test('failed refresh retains a timed event but never invents a successful check',()=>{
+ const d=data([game()]);d.sources.forEach(s=>s.status='error');
+ assert.equal(P.assess(d,'2026-11-06',now+3*86400000).state,'busy');
+ d.sources.forEach(s=>s.last_success=null);
+ assert.equal(P.assess(d,'2026-11-06',now).state,'tentative');
 });

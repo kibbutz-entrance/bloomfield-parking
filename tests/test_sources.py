@@ -18,6 +18,22 @@ def record(**kwargs):
 
 
 class SourceTests(unittest.TestCase):
+    def test_repeated_failures_keep_last_success_completeness(self):
+        for status in ('ok', 'partial'):
+            previous = dict(status=status, last_success='2026-11-01T12:00:00+00:00', records=[record()])
+            with patch.object(u, 'fetch', side_effect=TimeoutError('offline')):
+                for _ in range(3):
+                    previous = u.collect_source(u.SOURCES[0], previous, NOW)
+                    self.assertEqual(previous['last_success_status'], status)
+                    self.assertEqual(previous['last_success'], '2026-11-01T12:00:00+00:00')
+                    self.assertEqual(len(previous['records']), 1)
+
+    def test_failed_first_fetch_does_not_invent_coverage(self):
+        with patch.object(u, 'fetch', side_effect=TimeoutError('offline')):
+            result = u.collect_source(u.SOURCES[0], {}, NOW)
+        self.assertIsNone(result['last_success_status'])
+        self.assertIsNone(result['last_success'])
+
     def test_calendar_venue_and_utc_conversion(self):
         text = 'BEGIN:VCALENDAR\nBEGIN:VEVENT\nUID:1\nDTSTART:20261106T120000Z\nSUMMARY:מכבי ת"א-\n מכבי פ"ת\nX-LOCATION-DISPLAYNAME:אצטדיון בלומפילד\nEND:VEVENT\nBEGIN:VEVENT\nDTSTART:20261106T120000Z\nSUMMARY:משחק בבלומפילד\nLOCATION:סמי עופר\nEND:VEVENT\nEND:VCALENDAR'
         items = u.parse_ics(text)

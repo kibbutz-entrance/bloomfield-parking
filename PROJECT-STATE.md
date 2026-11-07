@@ -56,3 +56,10 @@ Added a blue P parking icon (parking-logo.png), favicon/Apple touch icon and sta
 - Keep two-hour freshness indicators, but permit successful schedule evidence up to 24 hours old for qualified estimates, with an explicit Hebrew/English delayed-update warning. Original source timestamps remain unchanged. Failed sources, conflicts, missing times, independent-publisher quorum and maximum coverage limits remain enforced; older-than-24h evidence is not usable. Calendar exports still require two-hour freshness.
 - UI re-renders when the delay flag changes, and versions the data script to avoid old browser caches. Both index and share pages are generated from the same source.
 - Regression checks cover observed 3/7/12/23-hour scheduling gaps, exact 24-hour expiry, known matches, conflicts and actual source failures. GitHub cron remains best effort; this patch does not guarantee its execution frequency.
+
+## User-directed simplification — 2026-11-07 (supersedes age-expiry rules above)
+
+- User explicitly wants a simple probable estimate from known schedules, not blanket uncertainty due to a timer. No external scheduler or service added.
+- Source success timestamps no longer expire usable published evidence. Known timed fixtures remain probable congestion; empty dates retain an estimate with two independent complete calendars within coverage. Freshness is disclosed separately with a short delay note. Contradictions and missing event details remain tentative; never-fetched sources and partial parses cannot prove absence.
+- Backend persists last_success_status through repeated fetch errors so cached complete calendars remain usable without upgrading partial ones. Calendar export and upcoming rows use schedule evidence rather than a two-hour expiry. Source timestamps remain honest.
+- Node regressions cover delayed schedules, cached full versus partial coverage, conflicts and missing evidence; Python regressions cover repeated failures preserving completeness and first-fetch failure.

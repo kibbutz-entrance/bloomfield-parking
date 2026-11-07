@@ -21,17 +21,18 @@
     return data;
   }
   function sourceFresh(data,id,now){const s=data.sources.find(s=>s.id===id);return !!s&&['ok','partial'].includes(s.status)&&fresh(s.last_success,now,2)}
-  // Scheduling is best-effort. Keep freshness (2h) separate from a bounded
-  // last-known schedule estimate (24h); failed feeds never gain eligibility.
-  function sourceUsable(data,id,now){const s=data.sources.find(s=>s.id===id);return !!s&&['ok','partial'].includes(s.status)&&fresh(s.last_success,now,24)}
+  // Published fixtures do not expire because a refresh is late. Retain actual
+  // evidence, including cached successful responses; freshness is disclosure only.
+  function sourceUsable(data,id,now){const s=data.sources.find(s=>s.id===id);return !!s&&['ok','partial','error'].includes(s.status)&&Number.isFinite(Date.parse(s.last_success))&&Date.parse(s.last_success)<=now+300000}
+  function sourceComplete(s){return s.status==='ok'||(s.status==='error'&&s.last_success_status==='ok')}
   function coverageHealth(data,day,now=Date.now()){
     if(!data||day<data.coverage.start||day>data.coverage.through)return {usable:false,publishers:0,partial:true};
-    const groups=new Set(data.sources.filter(s=>s.status==='ok'&&sourceUsable(data,s.id,now)).map(s=>s.publisher||({stadium_sports:'stadium',stadium_culture:'stadium',ifa_maccabi:'ifa',ifa_hapoel:'ifa'}[s.id]||s.id)));
+    const groups=new Set(data.sources.filter(s=>sourceComplete(s)&&sourceUsable(data,s.id,now)).map(s=>s.publisher||({stadium_sports:'stadium',stadium_culture:'stadium',ifa_maccabi:'ifa',ifa_hapoel:'ifa'}[s.id]||s.id)));
     const stadiumGroups=[...groups].filter(p=>['stadium','city','maccabi','ifa'].includes(p));
     // Two independent publishers, including an operator or city-wide calendar.
     // A duplicate feed or a nightclub alone cannot establish stadium coverage.
     return {usable:stadiumGroups.length>=2&&(groups.has('stadium')||groups.has('city')),publishers:groups.size,
-      delayed:data.sources.some(s=>s.status==='ok'&&sourceUsable(data,s.id,now)&&!sourceFresh(data,s.id,now)),
+      delayed:data.sources.some(s=>sourceComplete(s)&&sourceUsable(data,s.id,now)&&!sourceFresh(data,s.id,now)),
       partial:data.sources.some(s=>s.status!=='ok'||!sourceFresh(data,s.id,now))};
   }
   function coverageFresh(data,day,now=Date.now()){return coverageHealth(data,day,now).usable}

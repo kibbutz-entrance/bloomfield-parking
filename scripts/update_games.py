@@ -335,9 +335,10 @@ def collect_source(source, previous, now, fixture_dir=None):
         if isinstance(parsed, dict):
             parsed = parsed['records']
         return dict(status='partial' if unresolved else 'ok', checked_at=checked, last_success=checked,
-                    unresolved_items=unresolved, records=[{**r, 'source': source['id']} for r in parsed])
+                    last_success_status='partial' if unresolved else 'ok', unresolved_items=unresolved, records=[{**r, 'source': source['id']} for r in parsed])
     except Exception as error:
         return dict(status='error', checked_at=checked, last_success=previous.get('last_success'),
+                    last_success_status=previous.get('last_success_status') or (previous.get('status') if previous.get('status') in ('ok', 'partial') else None),
                     error=type(error).__name__ + ': ' + str(error)[:160], records=previous.get('records', []))
 
 
@@ -351,7 +352,7 @@ def update(output, cache_path, now, fixture_dir=None):
     cache = dict(zip((s['id'] for s in SOURCES), results))
     today = now.astimezone(TZ).date()
     games = build_games([{**r, 'current': value['status'] in ('ok', 'partial'), 'observed_at': value.get('last_success')} for value in results for r in value['records']], today)
-    sources = [{**{k: s[k] for k in ('id', 'label', 'url', 'required')}, **{k: r[k] for k in ('status', 'checked_at', 'last_success', 'error', 'unresolved_items') if k in r},
+    sources = [{**{k: s[k] for k in ('id', 'label', 'url', 'required')}, **{k: r[k] for k in ('status', 'checked_at', 'last_success', 'last_success_status', 'error', 'unresolved_items') if k in r},
                 'publisher': PUBLISHERS[s['id']], 'scope': 'stadium',
                 'events_count': sum(is_bloomfield(x['venue']) or bool(x.get('venue_id')) for x in r['records'])} for s, r in zip(SOURCES, results)]
     required_ok = all(not s['required'] or s['status'] == 'ok' for s in sources)
