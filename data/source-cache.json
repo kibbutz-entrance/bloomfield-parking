@@ -1,8 +1,8 @@
 {
   "stadium_sports": {
     "status": "ok",
-    "checked_at": "2026-11-08T06:29:14+00:00",
-    "last_success": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
+    "last_success": "2026-11-08T09:29:08+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -423,13 +423,90 @@
         "cancelled": false,
         "tentative": false,
         "source": "stadium_sports"
+      },
+      {
+        "native_id": "E26974D9-DFF2-47C7-BCFE-D1C3FD1C378E",
+        "d": "2026-12-03",
+        "k": "20:00",
+        "title": "הפועל ת\"א- מכבי נתניה",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/הפועל-ת-א-מכהי-נתניה",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "BB6C7F9A-F479-4FED-A1DE-02F57855FFD6",
+        "d": "2026-12-05",
+        "k": "15:00",
+        "title": "מכבי ת\"א- עירוני טבריה",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/מכבי-ת-א-עירוני-טבריה-2",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "B4949470-720A-413B-8F76-5B33023D7F80",
+        "d": "2026-12-12",
+        "k": "21:00",
+        "title": "מכבי ת\"א- הפועל ירושלים",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/מכבי-ת-א-הפועל-ירושלים-2",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "B3B58203-F716-4336-B19B-E81B34BD9FE6",
+        "d": "2026-12-19",
+        "k": "15:00",
+        "title": "הפועל ת\"א- הפועל חיפה",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/הפועל-ת-א-הפועל-חיפה",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "332D3E36-0AEE-4A16-ADC5-33FFD1143181",
+        "d": "2026-12-26",
+        "k": "20:00",
+        "title": "גביע המדינה סיבוב ח-מכבי ת\"א-הפועל ת\"א",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/גביע-המדינה-סיבוב-ח-מכבי-ת-א-הפועל-ת-א",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "70B095C0-0B8A-4918-A548-A3CA0EFEAF16",
+        "d": "2026-12-30",
+        "k": "20:30",
+        "title": "מכבי ת\"א-הפועל ב\"ש",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/מכבי-ת-א-הפועל-ב-ש",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
+      },
+      {
+        "native_id": "840A653C-4E7D-4E88-A04F-7A4D0748F3D7",
+        "d": "2027-01-04",
+        "k": "20:30",
+        "title": "הפועל ת\"א-מכבי ת\"א",
+        "venue": "אצטדיון בלומפילד",
+        "url": "https://www.sportpalace.co.il/tlv-faclities/sport-halls/menora-hall/menorah-mivtachim-hall-events-calendar/הפועל-ת-א-מכבי-ת-א-2",
+        "cancelled": false,
+        "tentative": false,
+        "source": "stadium_sports"
       }
     ]
   },
   "stadium_culture": {
     "status": "ok",
-    "checked_at": "2026-11-08T06:29:14+00:00",
-    "last_success": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
+    "last_success": "2026-11-08T09:29:08+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -503,7 +580,7 @@
   },
   "ifa_maccabi": {
     "status": "error",
-    "checked_at": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
     "last_success": "2026-11-07T18:56:57+00:00",
     "last_success_status": null,
     "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -798,7 +875,7 @@
   },
   "ifa_hapoel": {
     "status": "error",
-    "checked_at": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
     "last_success": "2026-11-07T18:56:57+00:00",
     "last_success_status": null,
     "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -1093,8 +1170,8 @@
   },
   "maccabi": {
     "status": "ok",
-    "checked_at": "2026-11-08T06:29:14+00:00",
-    "last_success": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
+    "last_success": "2026-11-08T09:29:08+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -1289,8 +1366,8 @@
   },
   "city": {
     "status": "ok",
-    "checked_at": "2026-11-08T06:29:14+00:00",
-    "last_success": "2026-11-08T06:29:14+00:00",
+    "checked_at": "2026-11-08T09:29:08+00:00",
+    "last_success": "2026-11-08T09:29:08+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
