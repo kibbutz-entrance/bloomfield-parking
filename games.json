@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "updated": "2026-11-08T02:41:30+00:00",
-  "last_attempt": "2026-11-08T02:41:30+00:00",
+  "updated": "2026-11-08T06:23:24+00:00",
+  "last_attempt": "2026-11-08T06:23:24+00:00",
   "timezone": "Asia/Jerusalem",
   "fresh_hours": 2,
   "coverage": {
@@ -18,8 +18,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T02:41:30+00:00",
-      "last_success": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
+      "last_success": "2026-11-08T06:23:24+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "stadium",
@@ -32,8 +32,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T02:41:30+00:00",
-      "last_success": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
+      "last_success": "2026-11-08T06:23:24+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "stadium",
@@ -46,7 +46,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=1061",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
       "last_success": "2026-11-07T18:56:57+00:00",
       "last_success_status": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -60,7 +60,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=2176",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
       "last_success": "2026-11-07T18:56:57+00:00",
       "last_success_status": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -74,8 +74,8 @@
       "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T02:41:30+00:00",
-      "last_success": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
+      "last_success": "2026-11-08T06:23:24+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "maccabi",
@@ -88,8 +88,8 @@
       "url": "https://sportlv.co.il/wp-json/tribe/events/v1/events",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T02:41:30+00:00",
-      "last_success": "2026-11-08T02:41:30+00:00",
+      "checked_at": "2026-11-08T06:23:24+00:00",
+      "last_success": "2026-11-08T06:23:24+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "city",
@@ -129,7 +129,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -141,7 +141,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -153,7 +153,7 @@
         {
           "source": "city",
           "publisher": "city",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -237,7 +237,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-12-05",
           "time": "15:00",
@@ -280,7 +280,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-12-12",
           "time": "19:00",
@@ -364,7 +364,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-12-26",
           "time": "20:00",
@@ -405,7 +405,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2026-12-30",
           "time": "20:30",
@@ -448,7 +448,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2027-01-04",
           "time": "20:30",
@@ -492,7 +492,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2027-01-09",
           "time": "",
@@ -576,7 +576,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2027-01-23",
           "time": "",
@@ -660,7 +660,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2027-02-06",
           "time": "",
@@ -785,7 +785,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T02:41:30+00:00",
+          "observed_at": "2026-11-08T06:23:24+00:00",
           "current": true,
           "date": "2027-02-27",
           "time": "",
@@ -841,6 +841,372 @@
       "ignored_cached_sources": [],
       "independent_publishers": 0,
       "verification": "cached"
+    }
+  ],
+  "nearby_advisories": [
+    {
+      "id": "lavon-2026-11-08",
+      "d": "2026-11-08",
+      "through": "2026-11-09",
+      "venue": {
+        "he": "פנחס לבון · מצבי פרייגרזון עד דרך קיבוץ גלויות",
+        "en": "Pinhas Lavon · Zvi Freigerzon to Kibbutz Galuyot"
+      },
+      "t": {
+        "he": "עבודות תשתית בשטח האתר",
+        "en": "Infrastructure work within the construction site"
+      },
+      "k": "19:00",
+      "references": [
+        "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/ClosedRoads.aspx",
+        "https://www.tel-aviv.gov.il/Transparency/Pages/Share.aspx"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "הודעת העירייה: עבודות בלילות 8–12.11, 19:00–05:00. לא פורסמה כאן חסימת חניה ביעד.",
+        "en": "City notice: nightly work Nov 8–12, 19:00–05:00. No parking closure at the destination confirmed."
+      },
+      "kind": "access",
+      "parking_impact": "unmeasured",
+      "start": "2026-11-08T19:00:00+02:00",
+      "end": "2026-11-09T05:00:00+02:00",
+      "group_id": "lavon-night-work"
+    },
+    {
+      "id": "lavon-2026-11-09",
+      "d": "2026-11-09",
+      "through": "2026-11-10",
+      "venue": {
+        "he": "פנחס לבון · מצבי פרייגרזון עד דרך קיבוץ גלויות",
+        "en": "Pinhas Lavon · Zvi Freigerzon to Kibbutz Galuyot"
+      },
+      "t": {
+        "he": "עבודות תשתית בשטח האתר",
+        "en": "Infrastructure work within the construction site"
+      },
+      "k": "19:00",
+      "references": [
+        "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/ClosedRoads.aspx",
+        "https://www.tel-aviv.gov.il/Transparency/Pages/Share.aspx"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "הודעת העירייה: עבודות בלילות 8–12.11, 19:00–05:00. לא פורסמה כאן חסימת חניה ביעד.",
+        "en": "City notice: nightly work Nov 8–12, 19:00–05:00. No parking closure at the destination confirmed."
+      },
+      "kind": "access",
+      "parking_impact": "unmeasured",
+      "start": "2026-11-09T19:00:00+02:00",
+      "end": "2026-11-10T05:00:00+02:00",
+      "group_id": "lavon-night-work"
+    },
+    {
+      "id": "lavon-2026-11-10",
+      "d": "2026-11-10",
+      "through": "2026-11-11",
+      "venue": {
+        "he": "פנחס לבון · מצבי פרייגרזון עד דרך קיבוץ גלויות",
+        "en": "Pinhas Lavon · Zvi Freigerzon to Kibbutz Galuyot"
+      },
+      "t": {
+        "he": "עבודות תשתית בשטח האתר",
+        "en": "Infrastructure work within the construction site"
+      },
+      "k": "19:00",
+      "references": [
+        "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/ClosedRoads.aspx",
+        "https://www.tel-aviv.gov.il/Transparency/Pages/Share.aspx"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "הודעת העירייה: עבודות בלילות 8–12.11, 19:00–05:00. לא פורסמה כאן חסימת חניה ביעד.",
+        "en": "City notice: nightly work Nov 8–12, 19:00–05:00. No parking closure at the destination confirmed."
+      },
+      "kind": "access",
+      "parking_impact": "unmeasured",
+      "start": "2026-11-10T19:00:00+02:00",
+      "end": "2026-11-11T05:00:00+02:00",
+      "group_id": "lavon-night-work"
+    },
+    {
+      "id": "lavon-2026-11-11",
+      "d": "2026-11-11",
+      "through": "2026-11-12",
+      "venue": {
+        "he": "פנחס לבון · מצבי פרייגרזון עד דרך קיבוץ גלויות",
+        "en": "Pinhas Lavon · Zvi Freigerzon to Kibbutz Galuyot"
+      },
+      "t": {
+        "he": "עבודות תשתית בשטח האתר",
+        "en": "Infrastructure work within the construction site"
+      },
+      "k": "19:00",
+      "references": [
+        "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/ClosedRoads.aspx",
+        "https://www.tel-aviv.gov.il/Transparency/Pages/Share.aspx"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "הודעת העירייה: עבודות בלילות 8–12.11, 19:00–05:00. לא פורסמה כאן חסימת חניה ביעד.",
+        "en": "City notice: nightly work Nov 8–12, 19:00–05:00. No parking closure at the destination confirmed."
+      },
+      "kind": "access",
+      "parking_impact": "unmeasured",
+      "start": "2026-11-11T19:00:00+02:00",
+      "end": "2026-11-12T05:00:00+02:00",
+      "group_id": "lavon-night-work"
+    },
+    {
+      "id": "duplex-2026-11-12",
+      "d": "2026-11-12",
+      "through": "2026-11-12",
+      "venue": {
+        "he": "דופלקס · הש״ך 10",
+        "en": "Duplex · HaShah 10"
+      },
+      "t": {
+        "he": "מסיבת שנות האלפיים",
+        "en": "2000s party"
+      },
+      "k": "",
+      "references": [
+        "https://duplexclub.co.il/event/1448/",
+        "https://duplexclub.co.il/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "באותו עמוד פורסמו 23:55 ו־23:59; השעה אינה אחידה.",
+        "en": "The page lists both 23:55 and 23:59; start time is inconsistent."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "duplex-2026-11-12"
+    },
+    {
+      "id": "lavon-2026-11-12",
+      "d": "2026-11-12",
+      "through": "2026-11-13",
+      "venue": {
+        "he": "פנחס לבון · מצבי פרייגרזון עד דרך קיבוץ גלויות",
+        "en": "Pinhas Lavon · Zvi Freigerzon to Kibbutz Galuyot"
+      },
+      "t": {
+        "he": "עבודות תשתית בשטח האתר",
+        "en": "Infrastructure work within the construction site"
+      },
+      "k": "19:00",
+      "references": [
+        "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/ClosedRoads.aspx",
+        "https://www.tel-aviv.gov.il/Transparency/Pages/Share.aspx"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "הודעת העירייה: עבודות בלילות 8–12.11, 19:00–05:00. לא פורסמה כאן חסימת חניה ביעד.",
+        "en": "City notice: nightly work Nov 8–12, 19:00–05:00. No parking closure at the destination confirmed."
+      },
+      "kind": "access",
+      "parking_impact": "unmeasured",
+      "start": "2026-11-12T19:00:00+02:00",
+      "end": "2026-11-13T05:00:00+02:00",
+      "group_id": "lavon-night-work"
+    },
+    {
+      "id": "gagarin-insomnia",
+      "d": "2026-11-13",
+      "through": "2026-11-14",
+      "venue": {
+        "he": "גגרין · קיבוץ גלויות 13",
+        "en": "Gagarin · Kibbutz Galuyot 13"
+      },
+      "t": {
+        "he": "INSOMNIA #25",
+        "en": "INSOMNIA #25"
+      },
+      "k": "",
+      "references": [
+        "https://gagarin.co.il/events/",
+        "https://gagarin.co.il/event/insonfri13/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "מופיע ביומן הציבורי; פרטי האירוע מוגנים ושעה לא פורסמה.",
+        "en": "Listed on the public calendar; details are protected and time is unpublished."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "gagarin-insomnia"
+    },
+    {
+      "id": "duplex-2026-11-13",
+      "d": "2026-11-13",
+      "through": "2026-11-13",
+      "venue": {
+        "he": "דופלקס · הש״ך 10",
+        "en": "Duplex · HaShah 10"
+      },
+      "t": {
+        "he": "מסיבת עשורים",
+        "en": "Decades party"
+      },
+      "k": "22:00",
+      "references": [
+        "https://duplexclub.co.il/event/1039/",
+        "https://duplexclub.co.il/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "אירוע לילה; שעת סיום לא פורסמה.",
+        "en": "Night event; no end time published."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "duplex-2026-11-13"
+    },
+    {
+      "id": "duplex-2026-11-19",
+      "d": "2026-11-19",
+      "through": "2026-11-19",
+      "venue": {
+        "he": "דופלקס · הש״ך 10",
+        "en": "Duplex · HaShah 10"
+      },
+      "t": {
+        "he": "Michael Jackson Party",
+        "en": "Michael Jackson Party"
+      },
+      "k": "23:00",
+      "references": [
+        "https://duplexclub.co.il/event/1725/",
+        "https://duplexclub.co.il/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "אירוע לילה; שעת סיום לא פורסמה.",
+        "en": "Night event; no end time published."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "duplex-2026-11-19"
+    },
+    {
+      "id": "duplex-2026-11-26",
+      "d": "2026-11-26",
+      "through": "2026-11-26",
+      "venue": {
+        "he": "דופלקס · הש״ך 10",
+        "en": "Duplex · HaShah 10"
+      },
+      "t": {
+        "he": "Metallica — The Black Album",
+        "en": "Metallica — The Black Album"
+      },
+      "k": "22:00",
+      "references": [
+        "https://duplexclub.co.il/event/2143/",
+        "https://duplexclub.co.il/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "אירוע לילה; שעת סיום לא פורסמה.",
+        "en": "Night event; no end time published."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "duplex-2026-11-26"
+    },
+    {
+      "id": "gagarin-santa3",
+      "d": "2026-12-03",
+      "through": "2026-12-04",
+      "venue": {
+        "he": "גגרין · קיבוץ גלויות 13",
+        "en": "Gagarin · Kibbutz Galuyot 13"
+      },
+      "t": {
+        "he": "Santa’s Sweatshop",
+        "en": "Santa’s Sweatshop"
+      },
+      "k": "",
+      "references": [
+        "https://gagarin.co.il/events/",
+        "https://gagarin.co.il/event/santassweat3shop/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "מופיע ביומן הציבורי; פרטי האירוע מוגנים ושעה לא פורסמה.",
+        "en": "Listed on the public calendar; details are protected and time is unpublished."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "gagarin-santa3"
+    },
+    {
+      "id": "duplex-2026-12-03",
+      "d": "2026-12-03",
+      "through": "2026-12-03",
+      "venue": {
+        "he": "דופלקס · הש״ך 10",
+        "en": "Duplex · HaShah 10"
+      },
+      "t": {
+        "he": "מסיבת פסטיגלים ולהיטי פופ",
+        "en": "Festigal and pop party"
+      },
+      "k": "23:00",
+      "references": [
+        "https://duplexclub.co.il/event/800/",
+        "https://duplexclub.co.il/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "אירוע לילה; שעת סיום לא פורסמה.",
+        "en": "Night event; no end time published."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "duplex-2026-12-03"
+    },
+    {
+      "id": "gagarin-santa4",
+      "d": "2026-12-04",
+      "through": "2026-12-05",
+      "venue": {
+        "he": "גגרין · קיבוץ גלויות 13",
+        "en": "Gagarin · Kibbutz Galuyot 13"
+      },
+      "t": {
+        "he": "Santa’s Sweatshop",
+        "en": "Santa’s Sweatshop"
+      },
+      "k": "",
+      "references": [
+        "https://gagarin.co.il/events/",
+        "https://gagarin.co.il/event/santassweat4shop/"
+      ],
+      "verified_at": "2026-11-08T06:15:05+00:00",
+      "note": {
+        "he": "מופיע ביומן הציבורי; פרטי האירוע מוגנים ושעה לא פורסמה.",
+        "en": "Listed on the public calendar; details are protected and time is unpublished."
+      },
+      "kind": "event",
+      "parking_impact": "unmeasured",
+      "start": null,
+      "end": null,
+      "group_id": "gagarin-santa4"
     }
   ],
   "parking_window": {
