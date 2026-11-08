@@ -11,7 +11,7 @@ spec = importlib.util.spec_from_file_location('updater', Path(__file__).parents[
 u = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(u)
 NOW = datetime(2026, 11, 8, 7, tzinfo=timezone.utc)
-FILE = u.ROOT/'data/nearby-advisories.json'
+FILE = Path(__file__).parent/'fixtures/data/nearby-advisories.json'
 
 class AdvisoryTests(unittest.TestCase):
     def test_reviewed_primary_notices_are_kept_separate_from_matches(self):
@@ -52,7 +52,7 @@ class AdvisoryTests(unittest.TestCase):
             with self.assertRaises(ValueError):u.load_advisories(p,NOW)
 
     def test_refresh_outage_keeps_reviewed_notices_and_does_not_change_sources(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(u,'fetch',side_effect=TimeoutError('offline')):
+        with tempfile.TemporaryDirectory() as folder, patch.object(u,'fetch',side_effect=TimeoutError('offline')), patch.object(u,'ROOT',FILE.parents[1]):
             result=u.update(Path(folder)/'games.json',Path(folder)/'cache.json',NOW)
             self.assertEqual(len(result['nearby_advisories']),13)
             self.assertEqual(result['games'],[])

@@ -1,7 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const P=require('../data.js');
-const reviewed=require('../data/nearby-advisories.json').advisories;
+const reviewed=require('./fixtures/data/nearby-advisories.json').advisories;
 const snapshot=require('../games.json');
 const now=Date.parse(snapshot.last_attempt);
 const data=()=>({...structuredClone(snapshot),nearby_advisories:structuredClone(reviewed)});
