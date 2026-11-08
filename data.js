@@ -18,6 +18,16 @@
         if(!Number.isFinite(Date.parse(g.start))||!Number.isFinite(Date.parse(g.end))||Date.parse(g.end)<=Date.parse(g.start))throw Error('Invalid event window');
       }
     }
+    if(data.nearby_advisories!==undefined){
+      if(!Array.isArray(data.nearby_advisories))throw Error('Invalid advisories');
+      const ids=new Set();
+      for(const a of data.nearby_advisories){
+        if(!a.id||ids.has(a.id)||!DAY.test(a.d)||!DAY.test(a.through)||a.through<a.d||a.parking_impact!=='unmeasured'||!a.t?.he||!a.venue?.he||!Array.isArray(a.references)||!a.references.length||!Number.isFinite(Date.parse(a.verified_at)))throw Error('Invalid advisory');
+        if(a.k&&!TIME.test(a.k))throw Error('Invalid advisory time');
+        if((a.start||a.end)&&(!Number.isFinite(Date.parse(a.start))||!Number.isFinite(Date.parse(a.end))||Date.parse(a.end)<=Date.parse(a.start)))throw Error('Invalid advisory window');
+        ids.add(a.id);
+      }
+    }
     return data;
   }
   function sourceFresh(data,id,now){const s=data.sources.find(s=>s.id===id);return !!s&&['ok','partial'].includes(s.status)&&fresh(s.last_success,now,2)}
@@ -39,6 +49,9 @@
   function eventsForDay(data,day){
     return (data?.games||[]).filter(g=>g.start&&g.end?dateAt(g.start)<=day&&dateAt(Date.parse(g.end)-1)>=day:g.d===day);
   }
+  function advisoriesForDay(data,day){
+    return (data?.nearby_advisories||[]).filter(a=>a.start&&a.end?dateAt(a.start)<=day&&dateAt(Date.parse(a.end)-1)>=day:a.d<=day&&a.through>=day);
+  }
   function windows(events,day){
     const intervals=events.filter(g=>g.start&&g.end).map(g=>[dateAt(g.start)<day?'00:00':timeAt(g.start),dateAt(g.end)>day?'24:00':timeAt(g.end)]).sort((a,b)=>a[0].localeCompare(b[0]));
     const out=[];
@@ -59,6 +72,6 @@
     const distant=day>(data.coverage.detailed_through||new Date(Date.parse(data.coverage.start+'T12:00:00Z')+14*86400000).toISOString().slice(0,10));
     return health.usable?{state:'clear',delayed:health.delayed,events:[],windows:[],reason:distant?'provisional':health.partial?'partial':'',confidence:distant?'provisional':health.partial?'moderate':'higher',publishers:health.publishers}:{state:'unknown',events:[],windows:[],reason:day>data.coverage.through?'horizon':'stale'};
   }
-  root.ParkingData={validate,fresh,dateAt,timeAt,sourceFresh,sourceUsable,coverageHealth,coverageFresh,eventsForDay,windows,assess};
+  root.ParkingData={validate,fresh,dateAt,timeAt,sourceFresh,sourceUsable,coverageHealth,coverageFresh,eventsForDay,advisoriesForDay,windows,assess};
   if(typeof module!=='undefined')module.exports=root.ParkingData;
 })(typeof window!=='undefined'?window:globalThis);

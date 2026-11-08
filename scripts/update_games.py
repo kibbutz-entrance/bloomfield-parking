@@ -342,6 +342,47 @@ def collect_source(source, previous, now, fixture_dir=None):
                     error=type(error).__name__ + ': ' + str(error)[:160], records=previous.get('records', []))
 
 
+
+def load_advisories(path, now):
+    """Reviewed primary-source notices; not part of the parking verdict/quorum.
+
+    Kept separate from the upstream cache so normal refreshes cannot overwrite
+    research. Expired events are omitted; verification dates are never refreshed.
+    """
+    data = json.loads(path.read_text())
+    if data.get('schema') != 1 or not isinstance(data.get('advisories'), list):
+        raise ValueError('Invalid nearby advisory file')
+    hosts = {'gagarin.co.il', 'duplexclub.co.il', 'www.tel-aviv.gov.il'}
+    seen, result = set(), []
+    today = now.astimezone(TZ).date().isoformat()
+    for item in data['advisories']:
+        if item.get('id') in seen or not item.get('id'):
+            raise ValueError('Duplicate/missing advisory ID')
+        seen.add(item['id'])
+        if not all(re.fullmatch(r'\d{4}-\d{2}-\d{2}', item.get(k, '')) for k in ('d', 'through')):
+            raise ValueError('Invalid advisory dates')
+        date.fromisoformat(item['d']); date.fromisoformat(item['through'])
+        if item['through'] < item['d'] or item.get('parking_impact') != 'unmeasured':
+            raise ValueError('Invalid advisory span/impact')
+        if not item.get('references') or any(urllib.parse.urlparse(url).scheme != 'https' or urllib.parse.urlparse(url).hostname not in hosts for url in item['references']):
+            raise ValueError('Advisory requires approved primary-source URLs')
+        if item.get('k') and not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', item['k']):
+            raise ValueError('Invalid published advisory time')
+        for key in ('venue', 't', 'note'):
+            if not all(isinstance(item.get(key, {}).get(lang), str) and item[key][lang] for lang in ('he', 'en')):
+                raise ValueError('Missing advisory text')
+        verified = datetime.fromisoformat(item['verified_at'])
+        if verified.tzinfo is None:
+            raise ValueError('Advisory verification needs a timezone')
+        if item.get('start') or item.get('end'):
+            a, b = datetime.fromisoformat(item['start']), datetime.fromisoformat(item['end'])
+            if not a.tzinfo or not b.tzinfo or b <= a or a.astimezone(TZ).date().isoformat() != item['d'] or b.astimezone(TZ).date().isoformat() != item['through']:
+                raise ValueError('Invalid advisory window')
+        if item['through'] >= today and verified <= now + timedelta(minutes=5):
+            result.append(item)
+    return sorted(result, key=lambda x: (x['d'], x.get('k', ''), x['id']))
+
+
 def update(output, cache_path, now, fixture_dir=None):
     try:
         previous = json.loads(cache_path.read_text())
@@ -359,7 +400,7 @@ def update(output, cache_path, now, fixture_dir=None):
     successful = [s['last_success'] for s in sources if s.get('last_success')]
     data = dict(schema=2, updated=max(successful) if successful else None, last_attempt=stamp(now), timezone='Asia/Jerusalem', fresh_hours=FRESH_HOURS,
                 coverage=dict(start=today.isoformat(), through=(today + timedelta(days=COVERAGE_DAYS)).isoformat(), complete=required_ok, basis='published_schedules', detailed_through=(today + timedelta(days=14)).isoformat()),
-                sources=sources, games=games, parking_window=dict(before_minutes=BEFORE_MIN, after_minutes=AFTER_MIN, estimated=True))
+                sources=sources, games=games, nearby_advisories=load_advisories(ROOT / 'data/nearby-advisories.json', now), parking_window=dict(before_minutes=BEFORE_MIN, after_minutes=AFTER_MIN, estimated=True))
     for path, value in ((cache_path, cache), (output, data)):
         path.parent.mkdir(parents=True, exist_ok=True)
         temporary = path.with_suffix(path.suffix + '.tmp')
