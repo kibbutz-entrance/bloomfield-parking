@@ -21,6 +21,7 @@ test('protected all-day calendar span remains visible without invented times',()
  const a=P.advisoriesForDay(data(),'2026-11-14').find(x=>x.id==='gagarin-insomnia');assert(a);assert.equal(a.k,'');assert.equal(a.start,null);
 });
 test('old clients without advisory fields and malformed advisory payloads are handled',()=>{
- assert.doesNotThrow(()=>P.validate(snapshot));assert.deepEqual(P.advisoriesForDay(snapshot,'2026-11-13'),[]);
+ const legacy=structuredClone(snapshot);delete legacy.nearby_advisories;
+ assert.doesNotThrow(()=>P.validate(legacy));assert.deepEqual(P.advisoriesForDay(legacy,'2026-11-13'),[]);
  const d=data();d.nearby_advisories[0].parking_impact='verified';assert.throws(()=>P.validate(d));
 });
