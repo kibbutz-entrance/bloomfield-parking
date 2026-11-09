@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "updated": "2026-11-08T20:45:11+00:00",
-  "last_attempt": "2026-11-08T20:45:11+00:00",
+  "updated": "2026-11-09T00:48:54+00:00",
+  "last_attempt": "2026-11-09T00:48:54+00:00",
   "timezone": "Asia/Jerusalem",
   "fresh_hours": 2,
   "coverage": {
-    "start": "2026-11-08",
-    "through": "2027-11-08",
+    "start": "2026-11-09",
+    "through": "2027-11-09",
     "complete": true,
     "basis": "published_schedules",
-    "detailed_through": "2026-11-22"
+    "detailed_through": "2026-11-23"
   },
   "sources": [
     {
@@ -18,8 +18,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=10&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T20:45:11+00:00",
-      "last_success": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
+      "last_success": "2026-11-09T00:48:54+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "stadium",
@@ -32,8 +32,8 @@
       "url": "https://www.sportpalace.co.il/index.php?id=11&option=com_dpcalendar&task=ical.download",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T20:45:11+00:00",
-      "last_success": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
+      "last_success": "2026-11-09T00:48:54+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "stadium",
@@ -46,7 +46,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=1061",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
       "last_success": "2026-11-07T18:56:57+00:00",
       "last_success_status": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -60,7 +60,7 @@
       "url": "https://www.football.org.il/team-details/team-games/?team_id=2176",
       "required": false,
       "status": "error",
-      "checked_at": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
       "last_success": "2026-11-07T18:56:57+00:00",
       "last_success_status": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -74,8 +74,8 @@
       "url": "https://www.maccabi-tlv.co.il/%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D-%D7%95%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA/%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94-%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%AA/%D7%9C%D7%95%D7%97-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D/",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T20:45:11+00:00",
-      "last_success": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
+      "last_success": "2026-11-09T00:48:54+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "maccabi",
@@ -88,8 +88,8 @@
       "url": "https://sportlv.co.il/wp-json/tribe/events/v1/events",
       "required": true,
       "status": "ok",
-      "checked_at": "2026-11-08T20:45:11+00:00",
-      "last_success": "2026-11-08T20:45:11+00:00",
+      "checked_at": "2026-11-09T00:48:54+00:00",
+      "last_success": "2026-11-09T00:48:54+00:00",
       "last_success_status": "ok",
       "unresolved_items": 0,
       "publisher": "city",
@@ -129,7 +129,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -141,7 +141,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -153,7 +153,7 @@
         {
           "source": "city",
           "publisher": "city",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-11-28",
           "time": "19:00",
@@ -196,7 +196,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-03",
           "time": "20:00",
@@ -241,7 +241,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-05",
           "time": "15:00",
@@ -253,7 +253,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-05",
           "time": "15:00",
@@ -298,7 +298,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-12",
           "time": "21:00",
@@ -310,7 +310,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-12",
           "time": "19:00",
@@ -353,7 +353,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-19",
           "time": "15:00",
@@ -398,7 +398,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-26",
           "time": "20:00",
@@ -410,7 +410,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-26",
           "time": "20:00",
@@ -453,7 +453,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-30",
           "time": "20:30",
@@ -465,7 +465,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2026-12-30",
           "time": "20:30",
@@ -510,7 +510,7 @@
         {
           "source": "stadium_sports",
           "publisher": "stadium",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-01-04",
           "time": "20:30",
@@ -522,7 +522,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-01-04",
           "time": "20:30",
@@ -566,7 +566,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-01-09",
           "time": "",
@@ -650,7 +650,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-01-23",
           "time": "",
@@ -734,7 +734,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-02-06",
           "time": "",
@@ -859,7 +859,7 @@
         {
           "source": "maccabi",
           "publisher": "maccabi",
-          "observed_at": "2026-11-08T20:45:11+00:00",
+          "observed_at": "2026-11-09T00:48:54+00:00",
           "current": true,
           "date": "2027-02-27",
           "time": "",

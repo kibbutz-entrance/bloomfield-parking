@@ -1,8 +1,8 @@
 {
   "stadium_sports": {
     "status": "ok",
-    "checked_at": "2026-11-08T20:45:11+00:00",
-    "last_success": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
+    "last_success": "2026-11-09T00:48:54+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -505,8 +505,8 @@
   },
   "stadium_culture": {
     "status": "ok",
-    "checked_at": "2026-11-08T20:45:11+00:00",
-    "last_success": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
+    "last_success": "2026-11-09T00:48:54+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -580,7 +580,7 @@
   },
   "ifa_maccabi": {
     "status": "error",
-    "checked_at": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
     "last_success": "2026-11-07T18:56:57+00:00",
     "last_success_status": null,
     "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -875,7 +875,7 @@
   },
   "ifa_hapoel": {
     "status": "error",
-    "checked_at": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
     "last_success": "2026-11-07T18:56:57+00:00",
     "last_success_status": null,
     "error": "HTTPError: HTTP Error 403: Forbidden",
@@ -1170,8 +1170,8 @@
   },
   "maccabi": {
     "status": "ok",
-    "checked_at": "2026-11-08T20:45:11+00:00",
-    "last_success": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
+    "last_success": "2026-11-09T00:48:54+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
@@ -1366,8 +1366,8 @@
   },
   "city": {
     "status": "ok",
-    "checked_at": "2026-11-08T20:45:11+00:00",
-    "last_success": "2026-11-08T20:45:11+00:00",
+    "checked_at": "2026-11-09T00:48:54+00:00",
+    "last_success": "2026-11-09T00:48:54+00:00",
     "last_success_status": "ok",
     "unresolved_items": 0,
     "records": [
